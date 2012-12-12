@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface IDAViewController : UIViewController
+@interface IDAViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnCamara;
 @property (weak, nonatomic) IBOutlet UIImageView *imgContentSpace;
 @property (weak, nonatomic) IBOutlet UIImageView *imgClothPreview;
+@property (strong, nonatomic) UIPopoverController *libraryPopoverController;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
 - (IBAction)onTapLoadImage:(id)sender;
+
 
 @end
