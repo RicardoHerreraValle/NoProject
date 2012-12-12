@@ -74,9 +74,26 @@
     
 }
 #pragma mark UIImagePickerViewDelegate
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
+    [_libraryPopoverController dismissPopoverAnimated:TRUE];
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    [self dismissViewControllerAnimated:TRUE completion:nil];
     
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        
+        _imgContentSpace.image = image;
+    }
+    
+}
+
+- (void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"error" message:@"Failed to saved the image" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 #pragma mark UIActionSheet Delegate
