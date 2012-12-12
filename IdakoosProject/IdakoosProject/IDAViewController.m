@@ -26,4 +26,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark IBAction Methods
+- (IBAction)onTapLoadImage:(id)sender {
+    
+    
+}
+
+
 @end

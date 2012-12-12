@@ -10,4 +10,9 @@
 
 @interface IDAViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgContentSpace;
+@property (weak, nonatomic) IBOutlet UIImageView *imgClothPreview;
+
+- (IBAction)onTapLoadImage:(id)sender;
+
 @end
