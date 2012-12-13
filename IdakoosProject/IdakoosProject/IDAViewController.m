@@ -48,7 +48,7 @@
     imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     imagePicker.allowsEditing = YES;
     
-    [self presentViewController:imagePicker animated:TRUE completion:nil];
+    [self presentModalViewController:imagePicker animated:TRUE];
 }
 
 #pragma mark IBAction Methods
@@ -107,12 +107,14 @@
         
     }else{
         [self chooseImagePhotoFromLibrary];
-    }
-    
-       
+    }   
     
     
-    
+}
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    //return (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight);
+    return YES;
 }
 
 @end
