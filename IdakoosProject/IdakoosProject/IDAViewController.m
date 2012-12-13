@@ -83,6 +83,7 @@
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
         
+        
         _imgContentSpace.image = image;
     }
     

@@ -18,6 +18,7 @@
 		63727273167918CF008EE240 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63727272167918CF008EE240 /* Default-568h@2x.png */; };
 		63727276167918CF008EE240 /* IDAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63727275167918CF008EE240 /* IDAViewController.m */; };
 		63727279167918CF008EE240 /* IDAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63727277167918CF008EE240 /* IDAViewController.xib */; };
+		638836CB167A6C0D00740566 /* IDALogoImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 638836CA167A6C0D00740566 /* IDALogoImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		63727274167918CF008EE240 /* IDAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDAViewController.h; sourceTree = "<group>"; };
 		63727275167918CF008EE240 /* IDAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDAViewController.m; sourceTree = "<group>"; };
 		63727278167918CF008EE240 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/IDAViewController.xib; sourceTree = "<group>"; };
+		638836C9167A6C0D00740566 /* IDALogoImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDALogoImage.h; path = MyClasses/IDALogoImage.h; sourceTree = "<group>"; };
+		638836CA167A6C0D00740566 /* IDALogoImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDALogoImage.m; path = MyClasses/IDALogoImage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,7 @@
 		63727262167918CE008EE240 /* IdakoosProject */ = {
 			isa = PBXGroup;
 			children = (
+				638836C7167A6BCB00740566 /* My Classes */,
 				6372726B167918CE008EE240 /* IDAAppDelegate.h */,
 				6372726C167918CE008EE240 /* IDAAppDelegate.m */,
 				63727274167918CF008EE240 /* IDAViewController.h */,
@@ -105,6 +109,15 @@
 				63727272167918CF008EE240 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		638836C7167A6BCB00740566 /* My Classes */ = {
+			isa = PBXGroup;
+			children = (
+				638836C9167A6C0D00740566 /* IDALogoImage.h */,
+				638836CA167A6C0D00740566 /* IDALogoImage.m */,
+			);
+			name = "My Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +190,7 @@
 				63727269167918CE008EE240 /* main.m in Sources */,
 				6372726D167918CE008EE240 /* IDAAppDelegate.m in Sources */,
 				63727276167918CF008EE240 /* IDAViewController.m in Sources */,
+				638836CB167A6C0D00740566 /* IDALogoImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +274,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IdakoosProject/IdakoosProject-Prefix.pch";
 				INFOPLIST_FILE = "IdakoosProject/IdakoosProject-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -271,6 +286,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IdakoosProject/IdakoosProject-Prefix.pch";
 				INFOPLIST_FILE = "IdakoosProject/IdakoosProject-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -295,6 +311,7 @@
 				6372727E167918CF008EE240 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

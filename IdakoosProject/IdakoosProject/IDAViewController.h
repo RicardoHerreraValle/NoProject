@@ -11,6 +11,11 @@
 
 @interface IDAViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate>
 
+{
+    NSMutableArray *arrayImages;
+    
+}
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnCamara;
 @property (weak, nonatomic) IBOutlet UIImageView *imgContentSpace;
 @property (weak, nonatomic) IBOutlet UIImageView *imgClothPreview;
