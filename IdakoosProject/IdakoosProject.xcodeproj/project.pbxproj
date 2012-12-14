@@ -19,6 +19,9 @@
 		63727276167918CF008EE240 /* IDAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63727275167918CF008EE240 /* IDAViewController.m */; };
 		63727279167918CF008EE240 /* IDAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63727277167918CF008EE240 /* IDAViewController.xib */; };
 		638836CB167A6C0D00740566 /* IDALogoImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 638836CA167A6C0D00740566 /* IDALogoImage.m */; };
+		638836CD167A6DFE00740566 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638836CC167A6DFE00740566 /* MobileCoreServices.framework */; };
+		638836CF167A6FB700740566 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638836CE167A6FB700740566 /* MessageUI.framework */; };
+		638836D1167A779900740566 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638836D0167A779900740566 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		63727278167918CF008EE240 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/IDAViewController.xib; sourceTree = "<group>"; };
 		638836C9167A6C0D00740566 /* IDALogoImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDALogoImage.h; path = MyClasses/IDALogoImage.h; sourceTree = "<group>"; };
 		638836CA167A6C0D00740566 /* IDALogoImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDALogoImage.m; path = MyClasses/IDALogoImage.m; sourceTree = "<group>"; };
+		638836CC167A6DFE00740566 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		638836CE167A6FB700740566 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		638836D0167A779900740566 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +53,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				638836D1167A779900740566 /* QuartzCore.framework in Frameworks */,
+				638836CF167A6FB700740566 /* MessageUI.framework in Frameworks */,
+				638836CD167A6DFE00740566 /* MobileCoreServices.framework in Frameworks */,
 				6372725D167918CE008EE240 /* UIKit.framework in Frameworks */,
 				6372725F167918CE008EE240 /* Foundation.framework in Frameworks */,
 				63727261167918CE008EE240 /* CoreGraphics.framework in Frameworks */,
@@ -76,6 +85,9 @@
 		6372725B167918CE008EE240 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				638836D0167A779900740566 /* QuartzCore.framework */,
+				638836CE167A6FB700740566 /* MessageUI.framework */,
+				638836CC167A6DFE00740566 /* MobileCoreServices.framework */,
 				6372725C167918CE008EE240 /* UIKit.framework */,
 				6372725E167918CE008EE240 /* Foundation.framework */,
 				63727260167918CE008EE240 /* CoreGraphics.framework */,

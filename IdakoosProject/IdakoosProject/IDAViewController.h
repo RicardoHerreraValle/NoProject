@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
+#import <QuartzCore/QuartzCore.h>
 
-@interface IDAViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate>
+@class IDALogoImage;
+@interface IDAViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate,
+                                                 MFMailComposeViewControllerDelegate>
 
 {
     NSMutableArray *arrayImages;
@@ -23,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
 - (IBAction)onTapLoadImage:(id)sender;
+- (IBAction)sendPhoto:(id)sender;
 
 
 @end
