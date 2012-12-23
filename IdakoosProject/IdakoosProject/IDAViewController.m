@@ -101,6 +101,8 @@
     [self presentModalViewController:mailView animated:TRUE];
     
     
+    
+    
 }
      
 #pragma mark MFMailCompose Delegate
@@ -111,6 +113,7 @@
         [alert show];
     }
     
+    [controller removeFromParentViewController];
     [self dismissModalViewControllerAnimated:TRUE];
 }
      

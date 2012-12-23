@@ -22,6 +22,7 @@
 		638836CD167A6DFE00740566 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638836CC167A6DFE00740566 /* MobileCoreServices.framework */; };
 		638836CF167A6FB700740566 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638836CE167A6FB700740566 /* MessageUI.framework */; };
 		638836D1167A779900740566 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638836D0167A779900740566 /* QuartzCore.framework */; };
+		A144AF89168775B2007EEE87 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A144AF88168775B2007EEE87 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		638836CC167A6DFE00740566 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		638836CE167A6FB700740566 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		638836D0167A779900740566 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A144AF88168775B2007EEE87 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				63727275167918CF008EE240 /* IDAViewController.m */,
 				63727277167918CF008EE240 /* IDAViewController.xib */,
 				63727263167918CE008EE240 /* Supporting Files */,
+				A144AF88168775B2007EEE87 /* Storyboard.storyboard */,
 			);
 			path = IdakoosProject;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				63727271167918CF008EE240 /* Default@2x.png in Resources */,
 				63727273167918CF008EE240 /* Default-568h@2x.png in Resources */,
 				63727279167918CF008EE240 /* IDAViewController.xib in Resources */,
+				A144AF89168775B2007EEE87 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
