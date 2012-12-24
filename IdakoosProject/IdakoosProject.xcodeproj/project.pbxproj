@@ -23,6 +23,8 @@
 		638836CF167A6FB700740566 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638836CE167A6FB700740566 /* MessageUI.framework */; };
 		638836D1167A779900740566 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638836D0167A779900740566 /* QuartzCore.framework */; };
 		A144AF89168775B2007EEE87 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A144AF88168775B2007EEE87 /* Storyboard.storyboard */; };
+		A1DD23991687FA2100FD2084 /* Modelo.ndm in Resources */ = {isa = PBXBuildFile; fileRef = A1DD23971687FA2100FD2084 /* Modelo.ndm */; };
+		A1DD239A1687FA2100FD2084 /* modelo.sql in Resources */ = {isa = PBXBuildFile; fileRef = A1DD23981687FA2100FD2084 /* modelo.sql */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		638836CE167A6FB700740566 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		638836D0167A779900740566 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A144AF88168775B2007EEE87 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		A1DD23971687FA2100FD2084 /* Modelo.ndm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Modelo.ndm; sourceTree = "<group>"; };
+		A1DD23981687FA2100FD2084 /* modelo.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = modelo.sql; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 		6372724D167918CE008EE240 = {
 			isa = PBXGroup;
 			children = (
+				A1DD23961687FA2100FD2084 /* BD */,
 				63727262167918CE008EE240 /* IdakoosProject */,
 				6372725B167918CE008EE240 /* Frameworks */,
 				63727259167918CE008EE240 /* Products */,
@@ -135,6 +140,15 @@
 			name = "My Classes";
 			sourceTree = "<group>";
 		};
+		A1DD23961687FA2100FD2084 /* BD */ = {
+			isa = PBXGroup;
+			children = (
+				A1DD23971687FA2100FD2084 /* Modelo.ndm */,
+				A1DD23981687FA2100FD2084 /* modelo.sql */,
+			);
+			path = BD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -193,6 +207,8 @@
 				63727273167918CF008EE240 /* Default-568h@2x.png in Resources */,
 				63727279167918CF008EE240 /* IDAViewController.xib in Resources */,
 				A144AF89168775B2007EEE87 /* Storyboard.storyboard in Resources */,
+				A1DD23991687FA2100FD2084 /* Modelo.ndm in Resources */,
+				A1DD239A1687FA2100FD2084 /* modelo.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
