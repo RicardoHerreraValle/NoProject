@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>BabyBodySuits</string>
+			<key>Active</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Hoodies</string>
+			<key>Active</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Mugs</string>
+			<key>Active</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>ToteBags</string>
+			<key>Active</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>TShirt</string>
+			<key>Active</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Acrylics</string>
+			<key>Active</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>CanvasPicture</string>
+			<key>Active</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Stickers</string>
+			<key>Active</key>
+			<false/>
+		</dict>
+	</array>
+</dict>
+</plist>

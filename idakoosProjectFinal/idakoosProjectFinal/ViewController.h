@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    
+    NSArray *arrayOptions;
+}
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollMenu;
+
+- (void)putMenuButtons;
+- (void)onSelectOption:(id)Sender;
 
 @end

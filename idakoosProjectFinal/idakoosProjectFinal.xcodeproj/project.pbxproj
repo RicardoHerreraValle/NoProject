@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A136F45116A3C4C400223D57 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A136F45016A3C4C400223D57 /* MessageUI.framework */; };
+		A136F45416A3CAB900223D57 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A136F45316A3CAB900223D57 /* MobileCoreServices.framework */; };
+		A136F45616A3CAC500223D57 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A136F45516A3CAC500223D57 /* QuartzCore.framework */; };
+		A136F45A16A3CDD500223D57 /* IDALogoImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A136F45916A3CDD500223D57 /* IDALogoImage.m */; };
+		A15269F616A3554400AC23D0 /* BabyBodySuits_Customize.png in Resources */ = {isa = PBXBuildFile; fileRef = A15269E916A3554400AC23D0 /* BabyBodySuits_Customize.png */; };
+		A15269F716A3554400AC23D0 /* custom_Acrylics.png in Resources */ = {isa = PBXBuildFile; fileRef = A15269EA16A3554400AC23D0 /* custom_Acrylics.png */; };
+		A15269F816A3554400AC23D0 /* custom_BabyBodySuits.png in Resources */ = {isa = PBXBuildFile; fileRef = A15269EB16A3554400AC23D0 /* custom_BabyBodySuits.png */; };
+		A15269F916A3554400AC23D0 /* custom_CanvasPicture.png in Resources */ = {isa = PBXBuildFile; fileRef = A15269EC16A3554400AC23D0 /* custom_CanvasPicture.png */; };
+		A15269FA16A3554400AC23D0 /* custom_Hoodies.png in Resources */ = {isa = PBXBuildFile; fileRef = A15269ED16A3554400AC23D0 /* custom_Hoodies.png */; };
+		A15269FB16A3554400AC23D0 /* custom_Mugs.png in Resources */ = {isa = PBXBuildFile; fileRef = A15269EE16A3554400AC23D0 /* custom_Mugs.png */; };
+		A15269FC16A3554400AC23D0 /* custom_Stickers.png in Resources */ = {isa = PBXBuildFile; fileRef = A15269EF16A3554400AC23D0 /* custom_Stickers.png */; };
+		A15269FD16A3554400AC23D0 /* custom_ToteBags.png in Resources */ = {isa = PBXBuildFile; fileRef = A15269F016A3554400AC23D0 /* custom_ToteBags.png */; };
+		A15269FE16A3554400AC23D0 /* custom_TShirt.png in Resources */ = {isa = PBXBuildFile; fileRef = A15269F116A3554400AC23D0 /* custom_TShirt.png */; };
+		A15269FF16A3554400AC23D0 /* Hoodies_Customize.png in Resources */ = {isa = PBXBuildFile; fileRef = A15269F216A3554400AC23D0 /* Hoodies_Customize.png */; };
+		A1526A0016A3554400AC23D0 /* Mugs_Customize.png in Resources */ = {isa = PBXBuildFile; fileRef = A15269F316A3554400AC23D0 /* Mugs_Customize.png */; };
+		A1526A0116A3554400AC23D0 /* ToteBags_Customize.png in Resources */ = {isa = PBXBuildFile; fileRef = A15269F416A3554400AC23D0 /* ToteBags_Customize.png */; };
+		A1526A0216A3554400AC23D0 /* TShirt_Customize.png in Resources */ = {isa = PBXBuildFile; fileRef = A15269F516A3554400AC23D0 /* TShirt_Customize.png */; };
+		A1526A0516A358E000AC23D0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1526A0416A358E000AC23D0 /* Default-568h@2x.png */; };
+		A1526A0716A35B6900AC23D0 /* MenuOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1526A0616A35B6900AC23D0 /* MenuOptions.plist */; };
+		A1526A0F16A3795300AC23D0 /* CustomizeProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1526A0E16A3795300AC23D0 /* CustomizeProductViewController.m */; };
 		A1797E0216877E86005E521D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1797E0116877E86005E521D /* UIKit.framework */; };
 		A1797E0416877E86005E521D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1797E0316877E86005E521D /* Foundation.framework */; };
 		A1797E0616877E86005E521D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1797E0516877E86005E521D /* CoreGraphics.framework */; };
@@ -19,6 +39,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A136F45016A3C4C400223D57 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		A136F45316A3CAB900223D57 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A136F45516A3CAC500223D57 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A136F45816A3CDD500223D57 /* IDALogoImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDALogoImage.h; sourceTree = "<group>"; };
+		A136F45916A3CDD500223D57 /* IDALogoImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDALogoImage.m; sourceTree = "<group>"; };
+		A15269E916A3554400AC23D0 /* BabyBodySuits_Customize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BabyBodySuits_Customize.png; sourceTree = "<group>"; };
+		A15269EA16A3554400AC23D0 /* custom_Acrylics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom_Acrylics.png; sourceTree = "<group>"; };
+		A15269EB16A3554400AC23D0 /* custom_BabyBodySuits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom_BabyBodySuits.png; sourceTree = "<group>"; };
+		A15269EC16A3554400AC23D0 /* custom_CanvasPicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom_CanvasPicture.png; sourceTree = "<group>"; };
+		A15269ED16A3554400AC23D0 /* custom_Hoodies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom_Hoodies.png; sourceTree = "<group>"; };
+		A15269EE16A3554400AC23D0 /* custom_Mugs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom_Mugs.png; sourceTree = "<group>"; };
+		A15269EF16A3554400AC23D0 /* custom_Stickers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom_Stickers.png; sourceTree = "<group>"; };
+		A15269F016A3554400AC23D0 /* custom_ToteBags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom_ToteBags.png; sourceTree = "<group>"; };
+		A15269F116A3554400AC23D0 /* custom_TShirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom_TShirt.png; sourceTree = "<group>"; };
+		A15269F216A3554400AC23D0 /* Hoodies_Customize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hoodies_Customize.png; sourceTree = "<group>"; };
+		A15269F316A3554400AC23D0 /* Mugs_Customize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mugs_Customize.png; sourceTree = "<group>"; };
+		A15269F416A3554400AC23D0 /* ToteBags_Customize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToteBags_Customize.png; sourceTree = "<group>"; };
+		A15269F516A3554400AC23D0 /* TShirt_Customize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TShirt_Customize.png; sourceTree = "<group>"; };
+		A1526A0416A358E000AC23D0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A1526A0616A35B6900AC23D0 /* MenuOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MenuOptions.plist; sourceTree = "<group>"; };
+		A1526A0D16A3795300AC23D0 /* CustomizeProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizeProductViewController.h; sourceTree = "<group>"; };
+		A1526A0E16A3795300AC23D0 /* CustomizeProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizeProductViewController.m; sourceTree = "<group>"; };
 		A1797DFD16877E86005E521D /* idakoosProjectFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = idakoosProjectFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1797E0116877E86005E521D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A1797E0316877E86005E521D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -40,6 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A136F45616A3CAC500223D57 /* QuartzCore.framework in Frameworks */,
+				A136F45416A3CAB900223D57 /* MobileCoreServices.framework in Frameworks */,
+				A136F45116A3C4C400223D57 /* MessageUI.framework in Frameworks */,
 				A1797E0216877E86005E521D /* UIKit.framework in Frameworks */,
 				A1797E0416877E86005E521D /* Foundation.framework in Frameworks */,
 				A1797E0616877E86005E521D /* CoreGraphics.framework in Frameworks */,
@@ -49,9 +94,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A136F45716A3CDD500223D57 /* MyClasses */ = {
+			isa = PBXGroup;
+			children = (
+				A136F45816A3CDD500223D57 /* IDALogoImage.h */,
+				A136F45916A3CDD500223D57 /* IDALogoImage.m */,
+			);
+			path = MyClasses;
+			sourceTree = "<group>";
+		};
+		A15269E716A3554400AC23D0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A15269E816A3554400AC23D0 /* Images */,
+				A1526A0616A35B6900AC23D0 /* MenuOptions.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A15269E816A3554400AC23D0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A15269E916A3554400AC23D0 /* BabyBodySuits_Customize.png */,
+				A15269EA16A3554400AC23D0 /* custom_Acrylics.png */,
+				A15269EB16A3554400AC23D0 /* custom_BabyBodySuits.png */,
+				A15269EC16A3554400AC23D0 /* custom_CanvasPicture.png */,
+				A15269ED16A3554400AC23D0 /* custom_Hoodies.png */,
+				A15269EE16A3554400AC23D0 /* custom_Mugs.png */,
+				A15269EF16A3554400AC23D0 /* custom_Stickers.png */,
+				A15269F016A3554400AC23D0 /* custom_ToteBags.png */,
+				A15269F116A3554400AC23D0 /* custom_TShirt.png */,
+				A15269F216A3554400AC23D0 /* Hoodies_Customize.png */,
+				A15269F316A3554400AC23D0 /* Mugs_Customize.png */,
+				A15269F416A3554400AC23D0 /* ToteBags_Customize.png */,
+				A15269F516A3554400AC23D0 /* TShirt_Customize.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		A1797DF216877E85005E521D = {
 			isa = PBXGroup;
 			children = (
+				A1526A0416A358E000AC23D0 /* Default-568h@2x.png */,
 				A1797E0716877E86005E521D /* idakoosProjectFinal */,
 				A1797E0016877E86005E521D /* Frameworks */,
 				A1797DFE16877E86005E521D /* Products */,
@@ -69,6 +153,9 @@
 		A1797E0016877E86005E521D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A136F45516A3CAC500223D57 /* QuartzCore.framework */,
+				A136F45316A3CAB900223D57 /* MobileCoreServices.framework */,
+				A136F45016A3C4C400223D57 /* MessageUI.framework */,
 				A1797E0116877E86005E521D /* UIKit.framework */,
 				A1797E0316877E86005E521D /* Foundation.framework */,
 				A1797E0516877E86005E521D /* CoreGraphics.framework */,
@@ -85,6 +172,10 @@
 				A1797E1616877E86005E521D /* MainStoryboard_iPad.storyboard */,
 				A1797E1916877E86005E521D /* ViewController.h */,
 				A1797E1A16877E86005E521D /* ViewController.m */,
+				A1526A0D16A3795300AC23D0 /* CustomizeProductViewController.h */,
+				A1526A0E16A3795300AC23D0 /* CustomizeProductViewController.m */,
+				A136F45716A3CDD500223D57 /* MyClasses */,
+				A15269E716A3554400AC23D0 /* Resources */,
 				A1797E0816877E86005E521D /* Supporting Files */,
 			);
 			path = idakoosProjectFinal;
@@ -155,6 +246,21 @@
 				A1797E0C16877E86005E521D /* InfoPlist.strings in Resources */,
 				A1797E1516877E86005E521D /* MainStoryboard_iPhone.storyboard in Resources */,
 				A1797E1816877E86005E521D /* MainStoryboard_iPad.storyboard in Resources */,
+				A15269F616A3554400AC23D0 /* BabyBodySuits_Customize.png in Resources */,
+				A15269F716A3554400AC23D0 /* custom_Acrylics.png in Resources */,
+				A15269F816A3554400AC23D0 /* custom_BabyBodySuits.png in Resources */,
+				A15269F916A3554400AC23D0 /* custom_CanvasPicture.png in Resources */,
+				A15269FA16A3554400AC23D0 /* custom_Hoodies.png in Resources */,
+				A15269FB16A3554400AC23D0 /* custom_Mugs.png in Resources */,
+				A15269FC16A3554400AC23D0 /* custom_Stickers.png in Resources */,
+				A15269FD16A3554400AC23D0 /* custom_ToteBags.png in Resources */,
+				A15269FE16A3554400AC23D0 /* custom_TShirt.png in Resources */,
+				A15269FF16A3554400AC23D0 /* Hoodies_Customize.png in Resources */,
+				A1526A0016A3554400AC23D0 /* Mugs_Customize.png in Resources */,
+				A1526A0116A3554400AC23D0 /* ToteBags_Customize.png in Resources */,
+				A1526A0216A3554400AC23D0 /* TShirt_Customize.png in Resources */,
+				A1526A0516A358E000AC23D0 /* Default-568h@2x.png in Resources */,
+				A1526A0716A35B6900AC23D0 /* MenuOptions.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +274,8 @@
 				A1797E0E16877E86005E521D /* main.m in Sources */,
 				A1797E1216877E86005E521D /* AppDelegate.m in Sources */,
 				A1797E1B16877E86005E521D /* ViewController.m in Sources */,
+				A1526A0F16A3795300AC23D0 /* CustomizeProductViewController.m in Sources */,
+				A136F45A16A3CDD500223D57 /* IDALogoImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +401,7 @@
 				A1797E2016877E86005E521D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

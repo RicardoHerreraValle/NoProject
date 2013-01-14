@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IDALogoImage : UIImageView
+@interface IDALogoImage : UIImageView{
+    
+    UIImageView *imgContentSpace;
+}
 
 @end

@@ -10,11 +10,12 @@
 
 @implementation IDALogoImage
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame withContenSpace:(UIImageView *)imgSpace
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        imgContentSpace = imgSpace;
     }
     return self;
 }
