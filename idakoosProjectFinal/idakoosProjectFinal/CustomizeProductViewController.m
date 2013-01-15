@@ -145,6 +145,25 @@
 }
 
 - (IBAction)onTapWriteMessage:(id)sender {
+    
+    if (txtMessage != nil) {
+        return;
+    }
+    
+    txtMessage = [[UITextField alloc] initWithFrame:CGRectMake(50, 50, 300, 40)];
+    
+    txtMessage.borderStyle = UITextBorderStyleRoundedRect;
+    txtMessage.font = [UIFont systemFontOfSize:15];
+    txtMessage.placeholder = @"enter text";
+    txtMessage.autocorrectionType = UITextAutocorrectionTypeNo;
+    txtMessage.keyboardType = UIKeyboardTypeDefault;
+    txtMessage.returnKeyType = UIReturnKeyDone;
+    txtMessage.clearButtonMode = UITextFieldViewModeWhileEditing;
+    txtMessage.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    txtMessage.delegate = self;
+    
+    [self.view addSubview:txtMessage];
+    [txtMessage setCenter:CGPointMake(768/2, 1024/2)];
 }
 
 - (void)didReceiveMemoryWarning

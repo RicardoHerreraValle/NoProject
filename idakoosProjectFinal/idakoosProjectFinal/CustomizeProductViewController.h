@@ -12,12 +12,15 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface CustomizeProductViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate>{
+@interface CustomizeProductViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate, UITextFieldDelegate>{
     
     int selectedProduct;
     UIImageView *imgContentSpace;
     
     NSMutableArray *arrayImages;
+    NSMutableArray *arrayLabels;
+    
+    UITextField *txtMessage;
     
 }
 
