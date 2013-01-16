@@ -10,6 +10,7 @@
 #import "IDALogoImage.h"
 #import "IDACustomLabel.h"
 
+
 @interface CustomizeProductViewController ()
 
 @end
@@ -17,7 +18,7 @@
 @implementation CustomizeProductViewController
 
 @synthesize selectedProduct;
-@synthesize imgContentSpace, imgProduct;
+@synthesize viewContentSpace, imgProduct;
 #pragma mark on touch button
 - (IBAction)onTouchCancel{
     [self dismissModalViewControllerAnimated:TRUE];
@@ -90,10 +91,10 @@
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
         
-        IDALogoImage *anImage = [[IDALogoImage alloc] initWithFrame:CGRectMake(arc4random()%100, arc4random()%100, 80, 80) withContenSpace:imgContentSpace];
-        [anImage setImage:image];
+        IDALogoImage *anImage = [[IDALogoImage alloc] initWithFrame:CGRectMake(arc4random()%100, arc4random()%100, 80, 80) withContenSpace:viewContentSpace];
+        [(UIImageView *)anImage setImage:image];
         [anImage setUserInteractionEnabled:YES];
-        [imgContentSpace addSubview:anImage];
+        [viewContentSpace addSubview:anImage];
         [arrayImages addObject:anImage];
     }
     
@@ -126,20 +127,23 @@
 #pragma mark UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
-    if ([@"" isEqualToString:txtMessage.text]) {
+    NSLog(@"texto : %@", textField.text);
+    
+    if (![@"" isEqualToString:txtMessage.text]) {
         
-        IDACustomLabel *lblCustom = [[IDACustomLabel alloc] initWithFrame:CGRectMake(50, 50, 300, 80) withContenSpace:imgContentSpace];
+        IDACustomLabel *lblCustom = [[IDACustomLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 80) withContenSpace:viewContentSpace];
         
         [lblCustom setText:txtMessage.text];
-        [lblCustom setBackgroundColor:[UIColor clearColor]];
+        [lblCustom setBackgroundColor:[UIColor whiteColor]];
         [lblCustom setNumberOfLines:2];
         [lblCustom setTextAlignment:NSTextAlignmentCenter];
         [lblCustom setFont:[UIFont fontWithName:@"System" size:17.0f]];
-        [lblCustom setCenter:imgContentSpace.center];
+        [lblCustom setCenter:viewContentSpace.center];
         [lblCustom setUserInteractionEnabled:TRUE];
         [self.view addSubview:lblCustom];
-        [imgContentSpace setUserInteractionEnabled:TRUE];
+        [viewContentSpace setUserInteractionEnabled:TRUE];
         [arrayLabels addObject:lblCustom];
+        
     }
     
     [self onTapCancelCustomLabel:nil];
@@ -197,6 +201,7 @@
     
     [self.view addSubview:txtMessage];
     [txtMessage setCenter:CGPointMake(768/2, 1024/2)];
+    [txtMessage becomeFirstResponder];
 }
 
 - (void)onTapCancelCustomLabel:(id)Sender{
@@ -220,7 +225,7 @@
 
 - (void)viewDidUnload {
     [self setImgProduct:nil];
-    [self setImgContentSpace:nil];
+    [self setViewContentSpace:nil];
     [self setToolBar:nil];
     [self setBtnCamara:nil];
     [super viewDidUnload];

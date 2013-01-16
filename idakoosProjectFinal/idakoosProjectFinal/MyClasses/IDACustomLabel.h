@@ -10,10 +10,10 @@
 
 @interface IDACustomLabel : UILabel{
     
-    UIImageView *imgContentSpace;
+    UIView *imgContentSpace;
 }
 
-- (id)initWithFrame:(CGRect)frame withContenSpace:(UIImageView *)imgSpace;
+- (id)initWithFrame:(CGRect)frame withContenSpace:(UIView *)imgSpacee;
 
 //gestures
 - (void)handlePinch:(UIPinchGestureRecognizer *)recognizer;

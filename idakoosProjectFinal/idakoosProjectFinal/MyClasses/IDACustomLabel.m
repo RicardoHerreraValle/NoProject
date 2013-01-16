@@ -10,7 +10,7 @@
 
 @implementation IDACustomLabel
 
-- (id)initWithFrame:(CGRect)frame withContenSpace:(UIImageView *)imgSpace
+- (id)initWithFrame:(CGRect)frame withContenSpace:(UIView *)imgSpace
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -47,9 +47,16 @@
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer {
     
     CGPoint translation = [recognizer translationInView:imgContentSpace];
+    
+    CGPoint temp = recognizer.view.center;
     recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x,
-                                         recognizer.view.center.y + translation.y);    
+                                         recognizer.view.center.y + translation.y);
     [recognizer setTranslation:CGPointMake(0, 0) inView:imgContentSpace];
+    
+    if ((self.frame.origin.x + self.frame.size.width > imgContentSpace.frame.origin.x + imgContentSpace.frame.size.width) ||
+        self.frame.origin.x < imgContentSpace.frame.origin.x || self.frame.origin.y < imgContentSpace.frame.origin.y) {
+        self.center = temp;
+    }
     
 }
 

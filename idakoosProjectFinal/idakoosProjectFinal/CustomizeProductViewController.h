@@ -15,7 +15,7 @@
 @interface CustomizeProductViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate, UITextFieldDelegate>{
     
     int selectedProduct;
-    UIImageView *imgContentSpace;
+    UIView *viewContentSpace;
     
     NSMutableArray *arrayImages;
     NSMutableArray *arrayLabels;
@@ -26,7 +26,7 @@
 
 @property(nonatomic) int selectedProduct;
 @property (strong, nonatomic) IBOutlet UIImageView *imgProduct;
-@property (strong, nonatomic) IBOutlet UIImageView *imgContentSpace;
+@property (strong, nonatomic) IBOutlet UIView *viewContentSpace;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (strong, nonatomic) UIPopoverController *libraryPopoverController;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnCamara;

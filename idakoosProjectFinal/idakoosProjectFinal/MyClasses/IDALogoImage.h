@@ -10,10 +10,10 @@
 
 @interface IDALogoImage : UIImageView{
     
-    UIImageView *imgContentSpace;
+    UIView *imgContentSpace;
 }
 
-- (id)initWithFrame:(CGRect)frame withContenSpace:(UIImageView *)imgSpace;
+- (id)initWithFrame:(CGRect)frame withContenSpace:(UIView *)imgSpace;
 
 //gestures
 - (void)handlePinch:(UIPinchGestureRecognizer *)recognizer;

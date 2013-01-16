@@ -10,7 +10,7 @@
 
 @implementation IDALogoImage
 
-- (id)initWithFrame:(CGRect)frame withContenSpace:(UIImageView *)imgSpace
+- (id)initWithFrame:(CGRect)frame withContenSpace:(UIView *)imgSpace
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -30,16 +30,6 @@
         [self setUserInteractionEnabled:TRUE];
     }
     return self;
-}
-
-#pragma mark touchmethods
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    NSLog(@"touch began");
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-    
 }
 
 #pragma mark UIGestures Method

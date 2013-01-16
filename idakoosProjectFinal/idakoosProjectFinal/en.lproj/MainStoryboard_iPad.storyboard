@@ -61,18 +61,19 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView contentMode="scaleToFill" id="q0w-9Z-otO">
+                            <view contentMode="scaleToFill" id="MuE-Pq-wkE">
                                 <rect key="frame" x="264" y="311" width="392" height="303"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="btnCamara" destination="xhV-MN-Gq0" id="fPp-TB-E6r"/>
-                        <outlet property="imgContentSpace" destination="q0w-9Z-otO" id="Wtp-Ph-jno"/>
                         <outlet property="imgProduct" destination="bvz-Fb-Dus" id="3fX-aa-76z"/>
                         <outlet property="toolBar" destination="lus-EF-OMP" id="xYd-SA-DBN"/>
+                        <outlet property="viewContentSpace" destination="MuE-Pq-wkE" id="1JU-HO-4ib"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yGm-gh-Ou9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -91,9 +92,9 @@
                 <relationship kind="action" name="onTapWriteMessage:"/>
                 <relationship kind="action" name="onTouchCancel"/>
                 <relationship kind="outlet" name="btnCamara" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="imgContentSpace" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="imgProduct" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="viewContentSpace" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="ViewController" superclassName="UIViewController">
