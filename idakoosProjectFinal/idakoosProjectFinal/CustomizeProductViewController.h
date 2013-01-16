@@ -35,6 +35,7 @@
 - (void)putImageProduct;
 - (IBAction)onTapLoadImage:(id)sender;
 - (IBAction)onTapWriteMessage:(id)sender;
+- (void)onTapCancelCustomLabel:(id)Sender;
 
 
 @end

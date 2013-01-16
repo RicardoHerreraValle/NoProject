@@ -8,6 +8,7 @@
 
 #import "CustomizeProductViewController.h"
 #import "IDALogoImage.h"
+#import "IDACustomLabel.h"
 
 @interface CustomizeProductViewController ()
 
@@ -122,6 +123,30 @@
     
 }
 
+#pragma mark UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    if ([@"" isEqualToString:txtMessage.text]) {
+        
+        IDACustomLabel *lblCustom = [[IDACustomLabel alloc] initWithFrame:CGRectMake(50, 50, 300, 80) withContenSpace:imgContentSpace];
+        
+        [lblCustom setText:txtMessage.text];
+        [lblCustom setBackgroundColor:[UIColor clearColor]];
+        [lblCustom setNumberOfLines:2];
+        [lblCustom setTextAlignment:NSTextAlignmentCenter];
+        [lblCustom setFont:[UIFont fontWithName:@"System" size:17.0f]];
+        [lblCustom setCenter:imgContentSpace.center];
+        [lblCustom setUserInteractionEnabled:TRUE];
+        [self.view addSubview:lblCustom];
+        [imgContentSpace setUserInteractionEnabled:TRUE];
+        [arrayLabels addObject:lblCustom];
+    }
+    
+    [self onTapCancelCustomLabel:nil];
+    
+    return YES;
+}
+
 #pragma mark onTapMethods
 - (IBAction)onTapLoadImage:(id)sender {
     
@@ -146,9 +171,17 @@
 
 - (IBAction)onTapWriteMessage:(id)sender {
     
-    if (txtMessage != nil) {
+    if (txtMessage) {
         return;
     }
+    
+    UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onTapCancelCustomLabel:)];
+    
+    NSMutableArray *arrayItems = [[NSMutableArray alloc] initWithArray:self.toolBar.items];
+    
+    [arrayItems addObject:btnCancel];
+    
+    self.toolBar.items = arrayItems;
     
     txtMessage = [[UITextField alloc] initWithFrame:CGRectMake(50, 50, 300, 40)];
     
@@ -164,6 +197,19 @@
     
     [self.view addSubview:txtMessage];
     [txtMessage setCenter:CGPointMake(768/2, 1024/2)];
+}
+
+- (void)onTapCancelCustomLabel:(id)Sender{
+    
+    [txtMessage setDelegate:nil];
+    [txtMessage removeFromSuperview];
+    txtMessage = nil;
+    
+    NSMutableArray *arrayItems = [[NSMutableArray alloc] initWithArray:self.toolBar.items];
+    
+    [arrayItems removeLastObject];
+    
+    self.toolBar.items = arrayItems;
 }
 
 - (void)didReceiveMemoryWarning
