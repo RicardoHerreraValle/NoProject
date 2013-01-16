@@ -61,7 +61,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView contentMode="scaleToFill" id="q0w-9Z-otO">
+                            <imageView contentMode="scaleToFill" image="ToteBags_Customize.png" id="q0w-9Z-otO">
                                 <rect key="frame" x="264" y="311" width="392" height="303"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -82,6 +82,7 @@
     </scenes>
     <resources>
         <image name="BabyBodySuits_Customize.png" width="148" height="166"/>
+        <image name="ToteBags_Customize.png" width="144" height="166"/>
     </resources>
     <classes>
         <class className="CustomizeProductViewController" superclassName="UIViewController">

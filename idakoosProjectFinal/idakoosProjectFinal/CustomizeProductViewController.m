@@ -90,7 +90,7 @@
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
         
-        IDALogoImage *anImage = [[IDALogoImage alloc] initWithFrame:CGRectMake(arc4random()%392, arc4random()%303, 80, 80) withContenSpace:imgContentSpace];
+        IDALogoImage *anImage = [[IDALogoImage alloc] initWithFrame:CGRectMake(arc4random()%100, arc4random()%100, 80, 80) withContenSpace:imgContentSpace];
         [anImage setImage:image];
         [anImage setUserInteractionEnabled:YES];
         [imgContentSpace addSubview:anImage];
