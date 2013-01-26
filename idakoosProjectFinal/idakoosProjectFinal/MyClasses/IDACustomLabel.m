@@ -41,7 +41,7 @@
 
 - (void)handleRotate:(UIRotationGestureRecognizer *)recognizer {
     recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
-    recognizer.rotation = 0;
+    recognizer.rotation = 0;//
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer {
