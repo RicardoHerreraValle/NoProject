@@ -12,6 +12,9 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "IDALogoImage.h"
+#import "IDACustomLabel.h"
+
 @interface CustomizeProductViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate, UITextFieldDelegate>{
     
     int selectedProduct;
@@ -21,6 +24,11 @@
     NSMutableArray *arrayLabels;
     
     UITextField *txtMessage;
+    
+    BOOL isLastTouchedObjectLabel;
+    
+    IDALogoImage *lastImageTouched;
+    IDACustomLabel *lasLabelTouched;
     
 }
 
@@ -36,6 +44,12 @@
 - (IBAction)onTapLoadImage:(id)sender;
 - (IBAction)onTapWriteMessage:(id)sender;
 - (void)onTapCancelCustomLabel:(id)Sender;
+
+-(void)removeImage:(NSNotification *)notification;
+-(void)removeLabel:(NSNotification *)notification;
+
+-(void)touchedImage:(NSNotification *)notification;
+-(void)touchedLabel:(NSNotification *)notification;
 
 
 @end

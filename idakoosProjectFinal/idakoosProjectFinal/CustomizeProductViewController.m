@@ -7,9 +7,6 @@
 //
 
 #import "CustomizeProductViewController.h"
-#import "IDALogoImage.h"
-#import "IDACustomLabel.h"
-
 
 @interface CustomizeProductViewController ()
 
@@ -23,6 +20,34 @@
 - (IBAction)onTouchCancel{
     [self dismissModalViewControllerAnimated:TRUE];
     
+}
+
+#pragma mark notification methods
+-(void)removeImage:(NSNotification *)notification{
+    IDALogoImage *anImage = (IDALogoImage *)[notification object];
+    
+    [anImage removeFromSuperview];
+    [arrayImages removeObject:anImage];
+    
+}
+
+-(void)removeLabel:(NSNotification *)notification{
+    IDACustomLabel *anLabel = (IDACustomLabel *)[notification object];
+    
+    [anLabel removeFromSuperview];
+    [arrayLabels removeObject:anLabel];
+}
+
+-(void)touchedImage:(NSNotification *)notification{
+    
+    lastImageTouched = (IDALogoImage *)[notification object];
+    isLastTouchedObjectLabel = FALSE;
+}
+
+-(void)touchedLabel:(NSNotification *)notification{
+    
+    lasLabelTouched = (IDACustomLabel *)[notification object];
+    isLastTouchedObjectLabel = TRUE;
 }
 
 #pragma mark initialization
@@ -42,6 +67,12 @@
     
     [self putImageProduct];
     arrayImages = [[NSMutableArray alloc] init];
+    
+    //notification intialization
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeImage:) name:@"removeCustomImage_iPad" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeLabel:) name:@"removeCustomLabel_iPad" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(touchedImage:) name:@"touchImage_iPad" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(touchedLabel:) name:@"touchLabel_iPad" object:nil];
     
 }
 
@@ -228,6 +259,7 @@
     [self setViewContentSpace:nil];
     [self setToolBar:nil];
     [self setBtnCamara:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewDidUnload];
 }
 @end

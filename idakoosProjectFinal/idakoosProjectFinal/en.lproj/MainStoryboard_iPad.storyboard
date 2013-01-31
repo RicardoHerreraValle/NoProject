@@ -100,32 +100,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yGm-gh-Ou9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13" y="-598"/>
+            <point key="canvasLocation" x="-43" y="-625"/>
         </scene>
     </scenes>
     <resources>
         <image name="BabyBodySuits_Customize.png" width="148" height="166"/>
     </resources>
-    <classes>
-        <class className="CustomizeProductViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomizeProductViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onTapLoadImage:"/>
-                <relationship kind="action" name="onTapWriteMessage:"/>
-                <relationship kind="action" name="onTouchCancel"/>
-                <relationship kind="outlet" name="btnCamara" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="imgProduct" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="viewContentSpace" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrollMenu" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
