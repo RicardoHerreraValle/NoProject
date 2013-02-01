@@ -10,12 +10,14 @@
 
 @implementation IDACustomLabel
 
-- (id)initWithFrame:(CGRect)frame withContenSpace:(UIView *)imgSpace
+@synthesize imgContentSpace;
+
+- (id)initWithFrame:(CGRect)frame// withContenSpace:(UIView *)imgSpace
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        imgContentSpace = imgSpace;
+        //imgContentSpace = imgSpace;
         
         UIRotationGestureRecognizer *rotateGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotate:)];
         
@@ -32,6 +34,13 @@
     return self;
 }
 
+#pragma mark touche Methods handling
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"touchLabel_iPad" object:self];
+}
+
+
 #pragma mark UIGestures Method
 
 - (void)handlePinch:(UIPinchGestureRecognizer *)recognizer {
@@ -46,6 +55,15 @@
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer {
     
+    if(recognizer.state == UIGestureRecognizerStateEnded)
+    {
+        //All fingers are lifted.
+        NSLog(@"gesture pan ended");
+        if (self.frame.origin.y + self.frame.size.height > imgContentSpace.frame.size.height) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"removeCustomLabel_iPad" object:self];
+        }
+    }
+    
     CGPoint translation = [recognizer translationInView:imgContentSpace];
     
     CGPoint temp = recognizer.view.center;
@@ -53,11 +71,10 @@
                                          recognizer.view.center.y + translation.y);
     [recognizer setTranslation:CGPointMake(0, 0) inView:imgContentSpace];
     
-    if ((self.frame.origin.x + self.frame.size.width > imgContentSpace.frame.origin.x + imgContentSpace.frame.size.width) ||
-        self.frame.origin.x < imgContentSpace.frame.origin.x || self.frame.origin.y < imgContentSpace.frame.origin.y) {
+    if ((self.frame.origin.x + self.frame.size.width > imgContentSpace.frame.size.width) ||
+        self.frame.origin.x < 0 || self.frame.origin.y < 0) {
         self.center = temp;
     }
-    
 }
 
 /*

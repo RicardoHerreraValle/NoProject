@@ -10,14 +10,16 @@
 
 @interface IDACustomLabel : UILabel{
     
-    UIView *imgContentSpace;
+    UIView __unsafe_unretained *imgContentSpace;
 }
 
-- (id)initWithFrame:(CGRect)frame withContenSpace:(UIView *)imgSpacee;
+//- (id)initWithFrame:(CGRect)frame withContenSpace:(UIView *)imgSpacee;
 
 //gestures
 - (void)handlePinch:(UIPinchGestureRecognizer *)recognizer;
 - (void)handleRotate:(UIRotationGestureRecognizer *)recognizer;
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer;
+
+@property(nonatomic, assign) UIView *imgContentSpace;
 
 @end

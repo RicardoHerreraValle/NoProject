@@ -32,6 +32,13 @@
     return self;
 }
 
+#pragma mark touche Methods handling
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"touchImage_iPad" object:self];
+}
+
+
 #pragma mark UIGestures Method
 
 - (void)handlePinch:(UIPinchGestureRecognizer *)recognizer {
@@ -45,6 +52,15 @@
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer {
+    
+    if(recognizer.state == UIGestureRecognizerStateEnded)
+    {
+        //All fingers are lifted.
+        NSLog(@"gesture pan ended");
+        if (self.frame.origin.y + self.frame.size.height > imgContentSpace.frame.size.height) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"removeCustomImage_iPad" object:self];
+        }
+    }
     
     CGPoint translation = [recognizer translationInView:imgContentSpace];
     

@@ -36,6 +36,8 @@
     
     [anLabel removeFromSuperview];
     [arrayLabels removeObject:anLabel];
+    
+    lasLabelTouched = NULL;
 }
 
 -(void)touchedImage:(NSNotification *)notification{
@@ -162,16 +164,17 @@
     
     if (![@"" isEqualToString:txtMessage.text]) {
         
-        IDACustomLabel *lblCustom = [[IDACustomLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 80) withContenSpace:viewContentSpace];
+        IDACustomLabel *lblCustom = [[IDACustomLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 80)];//] withContenSpace:viewContentSpace];
         
         [lblCustom setText:txtMessage.text];
         [lblCustom setBackgroundColor:[UIColor whiteColor]];
         [lblCustom setNumberOfLines:2];
         [lblCustom setTextAlignment:NSTextAlignmentCenter];
         [lblCustom setFont:[UIFont fontWithName:@"System" size:17.0f]];
-        [lblCustom setCenter:viewContentSpace.center];
+        [lblCustom setCenter:CGPointMake(viewContentSpace.frame.size.width/2, viewContentSpace.frame.size.height/2)];
         [lblCustom setUserInteractionEnabled:TRUE];
-        [self.view addSubview:lblCustom];
+        lblCustom.imgContentSpace = viewContentSpace;
+        [viewContentSpace addSubview:lblCustom];
         [viewContentSpace setUserInteractionEnabled:TRUE];
         [arrayLabels addObject:lblCustom];
         
