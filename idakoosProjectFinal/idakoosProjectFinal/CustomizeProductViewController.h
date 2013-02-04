@@ -28,7 +28,7 @@
     BOOL isLastTouchedObjectLabel;
     
     IDALogoImage *lastImageTouched;
-    IDACustomLabel *lasLabelTouched;
+    IDACustomLabel *lastLabelTouched;
     
 }
 
@@ -50,6 +50,11 @@
 
 -(void)touchedImage:(NSNotification *)notification;
 -(void)touchedLabel:(NSNotification *)notification;
+
+#pragma mark align method
+- (IBAction)ontapAlignButton:(id)sender;
+
+
 
 
 @end

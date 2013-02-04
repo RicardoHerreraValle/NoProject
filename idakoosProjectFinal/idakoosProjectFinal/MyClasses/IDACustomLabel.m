@@ -58,7 +58,6 @@
     if(recognizer.state == UIGestureRecognizerStateEnded)
     {
         //All fingers are lifted.
-        NSLog(@"gesture pan ended");
         if (self.frame.origin.y + self.frame.size.height > imgContentSpace.frame.size.height) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"removeCustomLabel_iPad" object:self];
         }

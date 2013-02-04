@@ -16,28 +16,37 @@
 
 @synthesize selectedProduct;
 @synthesize viewContentSpace, imgProduct;
-#pragma mark on touch button
-- (IBAction)onTouchCancel{
-    [self dismissModalViewControllerAnimated:TRUE];
-    
-}
 
 #pragma mark notification methods
 -(void)removeImage:(NSNotification *)notification{
     IDALogoImage *anImage = (IDALogoImage *)[notification object];
     
+    NSLog(@"array with images: %@", arrayImages);
+    NSLog(@"object: %d", [arrayImages containsObject:anImage]);
+    
     [anImage removeFromSuperview];
     [arrayImages removeObject:anImage];
+    
+    lastImageTouched = NULL;
     
 }
 
 -(void)removeLabel:(NSNotification *)notification{
     IDACustomLabel *anLabel = (IDACustomLabel *)[notification object];
     
+    NSLog(@"array with labels: %@", arrayLabels);
+    NSLog(@"object: %d", [arrayLabels containsObject:anLabel]);
     [anLabel removeFromSuperview];
     [arrayLabels removeObject:anLabel];
+    /*
+    for (IDACustomLabel *aLabel in arrayLabels) {
+        if ([aLabel isEqual:anLabel]) {
+            aLabel = nil;
+        }
+    }*/
     
-    lasLabelTouched = NULL;
+    
+    lastLabelTouched = NULL;
 }
 
 -(void)touchedImage:(NSNotification *)notification{
@@ -48,7 +57,7 @@
 
 -(void)touchedLabel:(NSNotification *)notification{
     
-    lasLabelTouched = (IDACustomLabel *)[notification object];
+    lastLabelTouched = (IDACustomLabel *)[notification object];
     isLastTouchedObjectLabel = TRUE;
 }
 
@@ -69,6 +78,7 @@
     
     [self putImageProduct];
     arrayImages = [[NSMutableArray alloc] init];
+    arrayLabels = [[NSMutableArray alloc] init];
     
     //notification intialization
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeImage:) name:@"removeCustomImage_iPad" object:nil];
@@ -164,15 +174,17 @@
     
     if (![@"" isEqualToString:txtMessage.text]) {
         
-        IDACustomLabel *lblCustom = [[IDACustomLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 80)];//] withContenSpace:viewContentSpace];
+        IDACustomLabel *lblCustom = [[IDACustomLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 80)];
         
         [lblCustom setText:txtMessage.text];
-        [lblCustom setBackgroundColor:[UIColor whiteColor]];
+        [lblCustom setTextColor:[UIColor greenColor]];
+        [lblCustom setBackgroundColor:[UIColor clearColor]];
         [lblCustom setNumberOfLines:2];
         [lblCustom setTextAlignment:NSTextAlignmentCenter];
         [lblCustom setFont:[UIFont fontWithName:@"System" size:17.0f]];
         [lblCustom setCenter:CGPointMake(viewContentSpace.frame.size.width/2, viewContentSpace.frame.size.height/2)];
         [lblCustom setUserInteractionEnabled:TRUE];
+        [lblCustom sizeToFit];
         lblCustom.imgContentSpace = viewContentSpace;
         [viewContentSpace addSubview:lblCustom];
         [viewContentSpace setUserInteractionEnabled:TRUE];
@@ -251,6 +263,81 @@
     self.toolBar.items = arrayItems;
 }
 
+- (IBAction)onTouchCancel{
+    [self dismissModalViewControllerAnimated:TRUE];
+    
+}
+
+- (IBAction)ontapAlignButton:(id)sender{
+    
+    if (lastLabelTouched == NULL && lastImageTouched == NULL) {
+        return;
+    }
+    
+    float viewWidth = viewContentSpace.frame.size.width;
+    float viewHeight = viewContentSpace.frame.size.height;
+    
+    //align buttons
+    switch ([sender tag]) {
+        case 0:{//Left
+            if (isLastTouchedObjectLabel) {
+                [lastLabelTouched setCenter:CGPointMake(lastLabelTouched.frame.size.width/2, lastLabelTouched.center.y)];
+            }else{
+                [lastImageTouched setCenter:CGPointMake(lastImageTouched.frame.size.width/2, lastImageTouched.center.y)];
+            }
+            
+        }   break;
+        case 1:{//Center
+            if (isLastTouchedObjectLabel) {
+                [lastLabelTouched setCenter:CGPointMake(viewWidth/2 ,
+                                                        lastLabelTouched.center.y)];
+            }else{
+                [lastImageTouched setCenter:CGPointMake(viewWidth/2 ,
+                                                        lastImageTouched.center.y)];
+            }
+            
+        }   break;
+        case 2:{//Right
+            if (isLastTouchedObjectLabel) {
+                [lastLabelTouched setCenter:CGPointMake(viewWidth - lastLabelTouched.frame.size.width/2, lastLabelTouched.center.y)];
+            }else{
+                [lastImageTouched setCenter:CGPointMake(viewWidth - lastImageTouched.frame.size.width/2, lastImageTouched.center.y)];
+            }
+            
+        }   break;
+        case 3:{//Top
+            if (isLastTouchedObjectLabel) {
+                [lastLabelTouched setCenter:CGPointMake(lastLabelTouched.center.x, lastLabelTouched.frame.size.height/2)];
+            }else{
+                [lastImageTouched setCenter:CGPointMake(lastImageTouched.center.x, lastImageTouched.frame.size.height/2)];
+            }
+        }   break;
+        case 4:{//Middle
+            if (isLastTouchedObjectLabel) {
+                [lastLabelTouched setCenter:CGPointMake(lastLabelTouched.center.x ,
+                                                        viewHeight/2)];
+            }else{
+                [lastImageTouched setCenter:CGPointMake(lastImageTouched.center.x ,
+                                                        viewHeight/2)];
+            }
+        }   break;
+        case 5:{//Bottom
+            if (isLastTouchedObjectLabel) {
+                [lastLabelTouched setCenter:CGPointMake(lastLabelTouched.center.x,
+                                                        viewHeight - lastLabelTouched.frame.size.height/2)];
+            }else{
+                [lastImageTouched setCenter:CGPointMake(lastImageTouched.center.x ,
+                                                        viewHeight - lastImageTouched.frame.size.height/2)];
+            }
+        }   break;
+            
+        default:
+            break;
+    }
+}
+
+
+#pragma mark memory handling
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
