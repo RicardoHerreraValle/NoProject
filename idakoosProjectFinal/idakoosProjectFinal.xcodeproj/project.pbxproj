@@ -36,6 +36,7 @@
 		A1797E1516877E86005E521D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1797E1316877E86005E521D /* MainStoryboard_iPhone.storyboard */; };
 		A1797E1816877E86005E521D /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1797E1616877E86005E521D /* MainStoryboard_iPad.storyboard */; };
 		A1797E1B16877E86005E521D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1797E1A16877E86005E521D /* ViewController.m */; };
+		A1D2789616C370130075C3AB /* Background_ToolBar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1D2789516C370130075C3AB /* Background_ToolBar.jpg */; };
 		A1E9FBDE16A61E74007D4E77 /* IDACustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E9FBDD16A61E74007D4E77 /* IDACustomLabel.m */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		A1797E1716877E86005E521D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		A1797E1916877E86005E521D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A1797E1A16877E86005E521D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A1D2789516C370130075C3AB /* Background_ToolBar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Background_ToolBar.jpg; sourceTree = "<group>"; };
 		A1E9FBDC16A61E74007D4E77 /* IDACustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDACustomLabel.h; sourceTree = "<group>"; };
 		A1E9FBDD16A61E74007D4E77 /* IDACustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDACustomLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				A15269E916A3554400AC23D0 /* BabyBodySuits_Customize.png */,
+				A1D2789516C370130075C3AB /* Background_ToolBar.jpg */,
 				A15269EA16A3554400AC23D0 /* custom_Acrylics.png */,
 				A15269EB16A3554400AC23D0 /* custom_BabyBodySuits.png */,
 				A15269EC16A3554400AC23D0 /* custom_CanvasPicture.png */,
@@ -266,6 +269,7 @@
 				A1526A0216A3554400AC23D0 /* TShirt_Customize.png in Resources */,
 				A1526A0516A358E000AC23D0 /* Default-568h@2x.png in Resources */,
 				A1526A0716A35B6900AC23D0 /* MenuOptions.plist in Resources */,
+				A1D2789616C370130075C3AB /* Background_ToolBar.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
