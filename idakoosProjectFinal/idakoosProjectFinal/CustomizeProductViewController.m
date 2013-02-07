@@ -27,7 +27,7 @@
     [anImage removeFromSuperview];
     [arrayImages removeObject:anImage];
     
-    lastImageTouched = NULL;
+    //lastImageTouched = NULL;
     
 }
 
@@ -38,15 +38,8 @@
     NSLog(@"object: %d", [arrayLabels containsObject:anLabel]);
     [anLabel removeFromSuperview];
     [arrayLabels removeObject:anLabel];
-    /*
-    for (IDACustomLabel *aLabel in arrayLabels) {
-        if ([aLabel isEqual:anLabel]) {
-            aLabel = nil;
-        }
-    }*/
     
-    
-    lastLabelTouched = NULL;
+    //lastLabelTouched = NULL;
 }
 
 -(void)touchedImage:(NSNotification *)notification{
