@@ -16,6 +16,7 @@
 
 @synthesize selectedProduct;
 @synthesize viewContentSpace, imgProduct;
+@synthesize aToolBar;
 
 #pragma mark notification methods
 -(void)removeImage:(NSNotification *)notification{
@@ -79,6 +80,17 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(touchedImage:) name:@"touchImage_iPad" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(touchedLabel:) name:@"touchLabel_iPad" object:nil];
     
+    
+    if ([aToolBar respondsToSelector:@selector(setBackgroundImage:forToolbarPosition:barMetrics:)]) {
+        [aToolBar setBackgroundImage:[UIImage imageNamed:@"Background_ToolBar.jpg"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    } else {
+        [aToolBar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Background_ToolBar.jpg"]] atIndex:0];
+    }
+    /*
+    UIImage *myImage = [UIImage imageNamed:@"Background_ToolBar.png"];
+    UIImageView *anImageView = [[UIImageView alloc] initWithImage:myImage];
+    [aToolBar insertSubview:anImageView atIndex:1];
+    */
 }
 
 - (void)putImageProduct{
@@ -329,6 +341,33 @@
     }
 }
 
+- (IBAction)onTapSendTo:(id)sender{
+    
+    if (lastLabelTouched == NULL && lastImageTouched == NULL) {
+        return;
+    }
+    
+    switch ([sender tag]) {
+        case 0:
+            if (isLastTouchedObjectLabel) {
+                [viewContentSpace bringSubviewToFront:lastLabelTouched];
+            }else{
+                [viewContentSpace bringSubviewToFront:lastImageTouched];
+            }
+            break;
+        case 1:
+            if (isLastTouchedObjectLabel) {
+                [viewContentSpace sendSubviewToBack:lastLabelTouched];
+            }else{
+                [viewContentSpace sendSubviewToBack:lastImageTouched];
+            }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 
 #pragma mark memory handling
 - (void)didReceiveMemoryWarning
@@ -343,6 +382,7 @@
     [self setToolBar:nil];
     [self setBtnCamara:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self setAToolBar:nil];
     [super viewDidUnload];
 }
 @end

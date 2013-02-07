@@ -89,7 +89,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </scrollView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Align" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KH1-jX-609">
-                                <rect key="frame" x="460" y="53" width="42" height="21"/>
+                                <rect key="frame" x="478" y="53" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -185,10 +185,41 @@
                                     <action selector="ontapAlignButton:" destination="fgS-jO-u1c" eventType="touchUpInside" id="rU8-Ma-NGB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gMi-ht-XpP">
+                                <rect key="frame" x="280" y="86" width="73" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Front">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTapSendTo:" destination="fgS-jO-u1c" eventType="touchUpInside" id="OvA-eG-8hF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LGq-Di-6SF">
+                                <rect key="frame" x="385" y="86" width="73" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTapSendTo:" destination="fgS-jO-u1c" eventType="touchUpInside" id="mz7-RV-Gwm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="aToolBar" destination="lus-EF-OMP" id="k37-FY-eO1"/>
                         <outlet property="btnCamara" destination="xhV-MN-Gq0" id="fPp-TB-E6r"/>
                         <outlet property="imgProduct" destination="bvz-Fb-Dus" id="3fX-aa-76z"/>
                         <outlet property="toolBar" destination="lus-EF-OMP" id="xYd-SA-DBN"/>
@@ -197,33 +228,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yGm-gh-Ou9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-958" y="-675"/>
+            <point key="canvasLocation" x="-175" y="-445"/>
         </scene>
     </scenes>
     <resources>
         <image name="BabyBodySuits_Customize.png" width="148" height="166"/>
     </resources>
-    <classes>
-        <class className="CustomizeProductViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomizeProductViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onTapLoadImage:"/>
-                <relationship kind="action" name="onTapWriteMessage:"/>
-                <relationship kind="action" name="onTouchCancel"/>
-                <relationship kind="action" name="ontapAlignButton:"/>
-                <relationship kind="outlet" name="btnCamara" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="imgProduct" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="viewContentSpace" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrollMenu" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

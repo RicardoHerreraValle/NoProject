@@ -30,6 +30,8 @@
     IDALogoImage *lastImageTouched;
     IDACustomLabel *lastLabelTouched;
     
+    UIToolbar *aToolBar;
+    
 }
 
 @property(nonatomic) int selectedProduct;
@@ -38,6 +40,7 @@
 @property (strong, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (strong, nonatomic) UIPopoverController *libraryPopoverController;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnCamara;
+@property (strong, nonatomic) IBOutlet UIToolbar *aToolBar;
 
 - (IBAction)onTouchCancel;
 - (void)putImageProduct;
@@ -53,6 +56,7 @@
 
 #pragma mark align method
 - (IBAction)ontapAlignButton:(id)sender;
+- (IBAction)onTapSendTo:(id)sender;
 
 
 
