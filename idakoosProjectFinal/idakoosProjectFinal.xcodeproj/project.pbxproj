@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A126253B16C6035100373311 /* DetailsProduct.plist in Resources */ = {isa = PBXBuildFile; fileRef = A126253A16C6035100373311 /* DetailsProduct.plist */; };
 		A136F45116A3C4C400223D57 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A136F45016A3C4C400223D57 /* MessageUI.framework */; };
 		A136F45416A3CAB900223D57 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A136F45316A3CAB900223D57 /* MobileCoreServices.framework */; };
 		A136F45616A3CAC500223D57 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A136F45516A3CAC500223D57 /* QuartzCore.framework */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A126253A16C6035100373311 /* DetailsProduct.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailsProduct.plist; sourceTree = "<group>"; };
 		A136F45016A3C4C400223D57 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A136F45316A3CAB900223D57 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A136F45516A3CAC500223D57 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -115,6 +117,7 @@
 			children = (
 				A15269E816A3554400AC23D0 /* Images */,
 				A1526A0616A35B6900AC23D0 /* MenuOptions.plist */,
+				A126253A16C6035100373311 /* DetailsProduct.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				A1526A0516A358E000AC23D0 /* Default-568h@2x.png in Resources */,
 				A1526A0716A35B6900AC23D0 /* MenuOptions.plist in Resources */,
 				A1D2789616C370130075C3AB /* Background_ToolBar.jpg in Resources */,
+				A126253B16C6035100373311 /* DetailsProduct.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

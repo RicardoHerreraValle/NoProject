@@ -23,6 +23,9 @@
     NSMutableArray *arrayImages;
     NSMutableArray *arrayLabels;
     
+    NSArray *arrayColors;
+    NSArray *arraySizes;
+    
     UITextField *txtMessage;
     
     BOOL isLastTouchedObjectLabel;
@@ -41,9 +44,14 @@
 @property (strong, nonatomic) UIPopoverController *libraryPopoverController;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnCamara;
 @property (strong, nonatomic) IBOutlet UIToolbar *aToolBar;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollSizes;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollColors;
+
+
+- (void)putImageProduct;
+- (void)putProductDetails;
 
 - (IBAction)onTouchCancel;
-- (void)putImageProduct;
 - (IBAction)onTapLoadImage:(id)sender;
 - (IBAction)onTapWriteMessage:(id)sender;
 - (void)onTapCancelCustomLabel:(id)Sender;

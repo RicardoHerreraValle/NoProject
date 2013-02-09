@@ -74,6 +74,15 @@
     arrayImages = [[NSMutableArray alloc] init];
     arrayLabels = [[NSMutableArray alloc] init];
     
+    //obtener colores y tallas del plist 
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"DetailsProduct" ofType:@"plist"];
+    NSDictionary *root = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    arrayColors = [[NSArray alloc] initWithArray:[root objectForKey:@"Color"]];
+    arraySizes = [[NSArray alloc] initWithArray:[root objectForKey:@"Size"]];
+    
+    [self putProductDetails];
+    
     //notification intialization
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeImage:) name:@"removeCustomImage_iPad" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeLabel:) name:@"removeCustomLabel_iPad" object:nil];
@@ -86,11 +95,6 @@
     } else {
         [aToolBar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Background_ToolBar.jpg"]] atIndex:0];
     }
-    /*
-    UIImage *myImage = [UIImage imageNamed:@"Background_ToolBar.png"];
-    UIImageView *anImageView = [[UIImageView alloc] initWithImage:myImage];
-    [aToolBar insertSubview:anImageView atIndex:1];
-    */
 }
 
 - (void)putImageProduct{
@@ -102,6 +106,45 @@
     
     [imgProduct setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_Customize", [[options objectAtIndex:selectedProduct] objectForKey:@"Name"]]]];
     
+}
+
+- (void)putProductDetails{
+    
+    //color from the plist
+    float width = 42;
+    for (int i=0; i< [arrayColors count]; i++) {
+        
+        NSDictionary *color = [arrayColors objectAtIndex:i];
+        
+        UIButton *btnSize = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        [btnSize setFrame:CGRectMake(9*(i+1) + width*i, 4, width, 37)];
+        [btnSize setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
+                                                    green:[[color objectForKey:@"Green"] floatValue]/255
+                                                     blue:[[color objectForKey:@"Blue"] floatValue]/255
+                                                    alpha:1.0]];
+        
+        [self.scrollColors addSubview:btnSize];
+        
+    }
+    
+    [self.scrollColors setContentSize:CGSizeMake(9 * [arrayColors count] + width*([arrayColors count]-1),
+                                                 self.scrollColors.frame.size.height)];
+    //sizes from the plist
+    width = 42;
+    for (int i=0; i< [arraySizes count]; i++) {
+        
+        UIButton *btnSize = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        
+        [btnSize setFrame:CGRectMake(9*(i+1) + width*i, 4, width, 37)];
+        [btnSize setTitle:[arraySizes objectAtIndex:i] forState:UIControlStateNormal];
+        
+        [self.scrollSizes addSubview:btnSize];
+        
+    }
+    
+    [self.scrollSizes setContentSize:CGSizeMake(9 * [arraySizes count] + width*([arraySizes count]-1),
+                                                 self.scrollSizes.frame.size.height)];
 }
 
 #pragma mark CameraMethods
@@ -383,6 +426,8 @@
     [self setBtnCamara:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self setAToolBar:nil];
+    [self setScrollSizes:nil];
+    [self setScrollColors:nil];
     [super viewDidUnload];
 }
 @end
