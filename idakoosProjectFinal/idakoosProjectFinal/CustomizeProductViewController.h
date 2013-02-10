@@ -18,11 +18,13 @@
 @interface CustomizeProductViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate, UITextFieldDelegate>{
     
     int selectedProduct;
+    int selectedTextColor;
     UIView *viewContentSpace;
     
     NSMutableArray *arrayImages;
     NSMutableArray *arrayLabels;
     
+    NSArray *arrayTextColor;
     NSArray *arrayColors;
     NSArray *arraySizes;
     
@@ -46,15 +48,18 @@
 @property (strong, nonatomic) IBOutlet UIToolbar *aToolBar;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollSizes;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollColors;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollTextColors;
 
 
 - (void)putImageProduct;
 - (void)putProductDetails;
+- (void)putTextColors;
 
 - (IBAction)onTouchCancel;
 - (IBAction)onTapLoadImage:(id)sender;
 - (IBAction)onTapWriteMessage:(id)sender;
 - (void)onTapCancelCustomLabel:(id)Sender;
+- (void)onTapTextColor:(id)Sender;
 
 -(void)removeImage:(NSNotification *)notification;
 -(void)removeLabel:(NSNotification *)notification;

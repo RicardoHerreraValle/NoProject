@@ -40,19 +40,23 @@
     [anLabel removeFromSuperview];
     [arrayLabels removeObject:anLabel];
     
-    //lastLabelTouched = NULL;
+    [self.scrollTextColors setHidden:TRUE];
 }
 
 -(void)touchedImage:(NSNotification *)notification{
     
     lastImageTouched = (IDALogoImage *)[notification object];
     isLastTouchedObjectLabel = FALSE;
+    
+    [self.scrollTextColors setHidden:TRUE]; 
 }
 
 -(void)touchedLabel:(NSNotification *)notification{
     
     lastLabelTouched = (IDACustomLabel *)[notification object];
     isLastTouchedObjectLabel = TRUE;
+    
+    [self.scrollTextColors setHidden:FALSE];
 }
 
 #pragma mark initialization
@@ -80,8 +84,13 @@
     
     arrayColors = [[NSArray alloc] initWithArray:[root objectForKey:@"Color"]];
     arraySizes = [[NSArray alloc] initWithArray:[root objectForKey:@"Size"]];
+    arrayTextColor = [[NSArray alloc] initWithArray:[root objectForKey:@"TextColor"]];
     
     [self putProductDetails];
+    [self putTextColors];
+    
+    //black is the default text color
+    selectedTextColor = 1;
     
     //notification intialization
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeImage:) name:@"removeCustomImage_iPad" object:nil];
@@ -95,6 +104,8 @@
     } else {
         [aToolBar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Background_ToolBar.jpg"]] atIndex:0];
     }
+    
+    [self.scrollTextColors setHidden:TRUE];
 }
 
 - (void)putImageProduct{
@@ -145,6 +156,48 @@
     
     [self.scrollSizes setContentSize:CGSizeMake(9 * [arraySizes count] + width*([arraySizes count]-1),
                                                  self.scrollSizes.frame.size.height)];
+}
+
+- (void)putTextColors{
+    
+    float width = 43;
+    
+    for (int i=0; i<[arrayTextColor count]/2; i++) {
+        NSDictionary *color = [arrayTextColor objectAtIndex:i];
+        
+        UIButton *btnTextColor = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        [btnTextColor setFrame:CGRectMake(10 * (i+1) + width * i, 10, width, 43)];
+        [btnTextColor setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
+                                                    green:[[color objectForKey:@"Green"] floatValue]/255
+                                                     blue:[[color objectForKey:@"Blue"] floatValue]/255
+                                                    alpha:1.0]];
+        
+        [btnTextColor setTag:i];
+        [btnTextColor addTarget:self action:@selector(onTapTextColor:) forControlEvents:UIControlEventTouchUpInside];
+        [self.scrollTextColors addSubview:btnTextColor];
+    }
+    
+    int i = 0;
+    
+    for (int k=[arrayTextColor count]/2; k<[arrayTextColor count]; k++) {
+        NSDictionary *color = [arrayTextColor objectAtIndex:k];
+        
+        UIButton *btnTextColor = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        [btnTextColor setFrame:CGRectMake(10 * (i+1) + width * i, 64, width, 43)];
+        [btnTextColor setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
+                                                         green:[[color objectForKey:@"Green"] floatValue]/255
+                                                          blue:[[color objectForKey:@"Blue"] floatValue]/255
+                                                         alpha:1.0]];
+        
+        [btnTextColor setTag:k];
+        [btnTextColor addTarget:self action:@selector(onTapTextColor:) forControlEvents:UIControlEventTouchUpInside];
+        [self.scrollTextColors addSubview:btnTextColor];
+        i++;
+    }
+    NSLog(@"width :%d",[arrayTextColor count]/2 +1);
+    [self.scrollTextColors setContentSize:CGSizeMake(9 * ([arrayTextColor count]/2 +3) + width*([arrayTextColor count]/2 +1), self.scrollTextColors.frame.size.height)];
 }
 
 #pragma mark CameraMethods
@@ -222,10 +275,14 @@
     
     if (![@"" isEqualToString:txtMessage.text]) {
         
+        NSDictionary *color = [arrayTextColor objectAtIndex:selectedTextColor];
         IDACustomLabel *lblCustom = [[IDACustomLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 80)];
         
         [lblCustom setText:txtMessage.text];
-        [lblCustom setTextColor:[UIColor greenColor]];
+        [lblCustom setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
+                                                green:[[color objectForKey:@"Green"] floatValue]/255
+                                                 blue:[[color objectForKey:@"Blue"] floatValue]/255
+                                                alpha:1.0]];
         [lblCustom setBackgroundColor:[UIColor clearColor]];
         [lblCustom setNumberOfLines:2];
         [lblCustom setTextAlignment:NSTextAlignmentCenter];
@@ -296,6 +353,8 @@
     [self.view addSubview:txtMessage];
     [txtMessage setCenter:CGPointMake(768/2, 1024/2)];
     [txtMessage becomeFirstResponder];
+    
+    [self.scrollTextColors setHidden:FALSE];
 }
 
 - (void)onTapCancelCustomLabel:(id)Sender{
@@ -309,6 +368,8 @@
     [arrayItems removeLastObject];
     
     self.toolBar.items = arrayItems;
+    
+    [self.scrollTextColors setHidden:TRUE];
 }
 
 - (IBAction)onTouchCancel{
@@ -411,6 +472,27 @@
     }
 }
 
+- (void)onTapTextColor:(id)Sender{
+    
+    NSDictionary *color = [arrayTextColor objectAtIndex:[Sender tag]];
+    
+    if (txtMessage == nil) {
+        if (!isLastTouchedObjectLabel || lastLabelTouched == NULL) {
+            return;
+        }
+        [lastLabelTouched setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
+                                                       green:[[color objectForKey:@"Green"] floatValue]/255
+                                                        blue:[[color objectForKey:@"Blue"] floatValue]/255
+                                                       alpha:1.0]];
+    }else{
+        [txtMessage setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
+                                                 green:[[color objectForKey:@"Green"] floatValue]/255
+                                                  blue:[[color objectForKey:@"Blue"] floatValue]/255
+                                                 alpha:1.0]];
+        selectedTextColor = [Sender tag];
+    }
+    
+}
 
 #pragma mark memory handling
 - (void)didReceiveMemoryWarning
@@ -428,6 +510,7 @@
     [self setAToolBar:nil];
     [self setScrollSizes:nil];
     [self setScrollColors:nil];
+    [self setScrollTextColors:nil];
     [super viewDidUnload];
 }
 @end

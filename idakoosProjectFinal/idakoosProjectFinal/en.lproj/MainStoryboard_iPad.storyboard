@@ -215,6 +215,10 @@
                                     <action selector="onTapSendTo:" destination="fgS-jO-u1c" eventType="touchUpInside" id="mz7-RV-Gwm"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="rlG-TB-enx">
+                                <rect key="frame" x="44" y="622" width="680" height="116"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -224,6 +228,7 @@
                         <outlet property="imgProduct" destination="bvz-Fb-Dus" id="3fX-aa-76z"/>
                         <outlet property="scrollColors" destination="F93-UG-9cE" id="OdF-at-esk"/>
                         <outlet property="scrollSizes" destination="4Bk-0Q-tbe" id="pgD-Ct-qCl"/>
+                        <outlet property="scrollTextColors" destination="rlG-TB-enx" id="qx5-ml-TgS"/>
                         <outlet property="toolBar" destination="lus-EF-OMP" id="xYd-SA-DBN"/>
                         <outlet property="viewContentSpace" destination="MuE-Pq-wkE" id="1JU-HO-4ib"/>
                     </connections>
@@ -250,6 +255,7 @@
                 <relationship kind="outlet" name="imgProduct" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="scrollColors" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="scrollSizes" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="scrollTextColors" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="viewContentSpace" candidateClass="UIView"/>
             </relationships>
