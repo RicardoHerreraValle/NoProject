@@ -318,5 +318,9 @@
 			<integer>51</integer>
 		</dict>
 	</array>
+	<key>TextFonts</key>
+	<array>
+		<string></string>
+	</array>
 </dict>
 </plist>

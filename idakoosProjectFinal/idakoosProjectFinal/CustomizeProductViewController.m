@@ -123,13 +123,14 @@
     
     //color from the plist
     float width = 42;
+    float height = 37;
     for (int i=0; i< [arrayColors count]; i++) {
         
         NSDictionary *color = [arrayColors objectAtIndex:i];
         
         UIButton *btnSize = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        [btnSize setFrame:CGRectMake(9*(i+1) + width*i, 4, width, 37)];
+        [btnSize setFrame:CGRectMake(17, 10*(i+1) + height*i , width, height)];
         [btnSize setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
                                                     green:[[color objectForKey:@"Green"] floatValue]/255
                                                      blue:[[color objectForKey:@"Blue"] floatValue]/255
@@ -139,23 +140,21 @@
         
     }
     
-    [self.scrollColors setContentSize:CGSizeMake(9 * [arrayColors count] + width*([arrayColors count]-1),
-                                                 self.scrollColors.frame.size.height)];
+    [self.scrollColors setContentSize:CGSizeMake( self.scrollColors.frame.size.width, 10 * [arrayColors count] + height*([arrayColors count]))];
     //sizes from the plist
     width = 42;
     for (int i=0; i< [arraySizes count]; i++) {
         
         UIButton *btnSize = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         
-        [btnSize setFrame:CGRectMake(9*(i+1) + width*i, 4, width, 37)];
+        [btnSize setFrame:CGRectMake(17, 10*(i+1) + height*i , width, height)];
         [btnSize setTitle:[arraySizes objectAtIndex:i] forState:UIControlStateNormal];
         
         [self.scrollSizes addSubview:btnSize];
         
     }
     
-    [self.scrollSizes setContentSize:CGSizeMake(9 * [arraySizes count] + width*([arraySizes count]-1),
-                                                 self.scrollSizes.frame.size.height)];
+    [self.scrollSizes setContentSize:CGSizeMake(self.scrollSizes.frame.size.width, 10 * [arraySizes count] + height*([arraySizes count]) )];
 }
 
 - (void)putTextColors{
