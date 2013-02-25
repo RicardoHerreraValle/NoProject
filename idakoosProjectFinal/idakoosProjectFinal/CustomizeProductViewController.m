@@ -302,6 +302,18 @@
     return YES;
 }
 
+#pragma mark MFMailCompose Delegate
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+    
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error description] delegate:nil cancelButtonTitle:@"Accept" otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    [controller removeFromParentViewController];
+    [self dismissModalViewControllerAnimated:TRUE];
+}
+
 #pragma mark onTapMethods
 - (IBAction)onTapLoadImage:(id)sender {
     
@@ -355,6 +367,22 @@
     [txtMessage becomeFirstResponder];
     
     [self.scrollTextColors setHidden:FALSE];
+}
+
+- (IBAction)onTapExport:(id)sender {
+    
+    UIGraphicsBeginImageContext(viewContentSpace.frame.size);
+    [viewContentSpace.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    MFMailComposeViewController *mailView = [[MFMailComposeViewController alloc] init];
+    mailView.mailComposeDelegate = self;
+    
+    [mailView setToRecipients:[NSArray arrayWithObject:@"aherreric@gmail.com"]];
+    [mailView addAttachmentData:UIImagePNGRepresentation(viewImage) mimeType:@"image/png" fileName:@"CameraImage"];
+    
+    [self presentModalViewController:mailView animated:TRUE];
 }
 
 - (void)onTapCancelCustomLabel:(id)Sender{

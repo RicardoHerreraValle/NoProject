@@ -58,6 +58,7 @@
 - (IBAction)onTouchCancel;
 - (IBAction)onTapLoadImage:(id)sender;
 - (IBAction)onTapWriteMessage:(id)sender;
+- (IBAction)onTapExport:(id)sender;
 - (void)onTapCancelCustomLabel:(id)Sender;
 - (void)onTapTextColor:(id)Sender;
 
