@@ -384,6 +384,62 @@
     [self presentModalViewController:mailView animated:TRUE];
 }
 
+- (IBAction)onTapRotateObject:(id)sender {
+    
+    if (lastImageTouched == NULL && lastLabelTouched == NULL ) {
+        return;
+    }
+    
+    switch ([sender tag]) {
+        case 0://rotate to the right
+            if (isLastTouchedObjectLabel) {
+                lastLabelTouched.transform = CGAffineTransformRotate(lastLabelTouched.transform, M_PI/2);
+            }else{
+                lastImageTouched.transform = CGAffineTransformRotate(lastImageTouched.transform, M_PI/2);
+            }
+            break;
+        case 1://rotate to the left
+            if (isLastTouchedObjectLabel) {
+                lastLabelTouched.transform = CGAffineTransformRotate(lastLabelTouched.transform, -M_PI/2);
+            }else{
+                lastImageTouched.transform = CGAffineTransformRotate(lastImageTouched.transform, -M_PI/2);
+            }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (IBAction)onTapChangeSizeObject:(id)sender {
+    
+    if (lastImageTouched == NULL && lastLabelTouched == NULL ) {
+        return;
+    }
+    float scaleIncrease = 1.3;
+    float scaleDecrease = 1.0 - 0.23;
+    
+    switch ([sender tag]) {
+        case 0://increase size
+            if (isLastTouchedObjectLabel) {
+                lastLabelTouched.transform = CGAffineTransformScale(lastLabelTouched.transform, scaleIncrease, scaleIncrease);
+            }else{
+                lastImageTouched.transform = CGAffineTransformScale(lastImageTouched.transform, scaleIncrease, scaleIncrease);
+            }
+            break;
+        case 1://decrease size
+            if (isLastTouchedObjectLabel) {
+                lastLabelTouched.transform = CGAffineTransformScale(lastLabelTouched.transform, scaleDecrease, scaleDecrease);
+            }else{
+                lastImageTouched.transform = CGAffineTransformScale(lastImageTouched.transform, scaleDecrease, scaleDecrease);
+            }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 - (void)onTapCancelCustomLabel:(id)Sender{
     
     [txtMessage setDelegate:nil];

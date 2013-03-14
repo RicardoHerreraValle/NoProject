@@ -42,8 +42,14 @@
 #pragma mark UIGestures Method
 
 - (void)handlePinch:(UIPinchGestureRecognizer *)recognizer {
+    CGSize currentSize = self.frame.size;
     recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
     recognizer.scale = 1;
+    
+    if (self.frame.size.height > imgContentSpace.frame.size.height ||
+        self.frame.size.width > imgContentSpace.frame.size.width) {
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, currentSize.width, currentSize.height);
+    }
 }
 
 - (void)handleRotate:(UIRotationGestureRecognizer *)recognizer {

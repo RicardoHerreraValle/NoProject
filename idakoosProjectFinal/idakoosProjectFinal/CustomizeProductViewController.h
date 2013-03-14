@@ -59,6 +59,8 @@
 - (IBAction)onTapLoadImage:(id)sender;
 - (IBAction)onTapWriteMessage:(id)sender;
 - (IBAction)onTapExport:(id)sender;
+- (IBAction)onTapRotateObject:(id)sender;
+- (IBAction)onTapChangeSizeObject:(id)sender;
 - (void)onTapCancelCustomLabel:(id)Sender;
 - (void)onTapTextColor:(id)Sender;
 
