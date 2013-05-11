@@ -20,6 +20,11 @@
 - (void)handleRotate:(UIRotationGestureRecognizer *)recognizer;
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer;
 
+- (void)resizeToStretch;
+- (void)adjustHeight;
+- (void)modifyTextSize:(float)factor;
+
 @property(nonatomic, assign) UIView *imgContentSpace;
+@property(nonatomic) float _textSize;
 
 @end

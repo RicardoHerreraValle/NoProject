@@ -22,25 +22,23 @@
 -(void)removeImage:(NSNotification *)notification{
     IDALogoImage *anImage = (IDALogoImage *)[notification object];
     
-    NSLog(@"array with images: %@", arrayImages);
-    NSLog(@"object: %d", [arrayImages containsObject:anImage]);
-    
     [anImage removeFromSuperview];
     [arrayImages removeObject:anImage];
     
     //lastImageTouched = NULL;
+    state = KNonState;
     
 }
 
 -(void)removeLabel:(NSNotification *)notification{
     IDACustomLabel *anLabel = (IDACustomLabel *)[notification object];
     
-    NSLog(@"array with labels: %@", arrayLabels);
-    NSLog(@"object: %d", [arrayLabels containsObject:anLabel]);
     [anLabel removeFromSuperview];
     [arrayLabels removeObject:anLabel];
     
-    [self.scrollTextColors setHidden:TRUE];
+    [self _setVisibleItemsForText:TRUE];
+    
+    state = KNonState;
 }
 
 -(void)touchedImage:(NSNotification *)notification{
@@ -48,7 +46,9 @@
     lastImageTouched = (IDALogoImage *)[notification object];
     isLastTouchedObjectLabel = FALSE;
     
-    [self.scrollTextColors setHidden:TRUE]; 
+    [self _setVisibleItemsForText:TRUE];
+    
+    state = KEditingImage;
 }
 
 -(void)touchedLabel:(NSNotification *)notification{
@@ -56,7 +56,50 @@
     lastLabelTouched = (IDACustomLabel *)[notification object];
     isLastTouchedObjectLabel = TRUE;
     
-    [self.scrollTextColors setHidden:FALSE];
+    [self _setVisibleItemsForText:false];
+    
+    state = KEditingLabel;
+}
+#pragma mark show methods
+- (void)_setVisibleItemsForText:(BOOL)showItems{
+    
+    
+    [self.scrollTextColors setHidden:showItems];
+    if (!showItems) {
+        [self.lblFontSize setText:[NSString stringWithFormat:@"%.1f", [lastLabelTouched _textSize]] ];
+        
+        
+        if (txtMessage) {
+            [txtMessage setDelegate:nil];
+            [txtMessage removeFromSuperview];
+            txtMessage = nil;
+        }
+        txtMessage = [[UITextField alloc] initWithFrame:CGRectMake(50, 50, 300, 40)];
+        
+        txtMessage.borderStyle = UITextBorderStyleRoundedRect;
+        txtMessage.font = [UIFont systemFontOfSize:lastLabelTouched._textSize];
+        txtMessage.text = lastLabelTouched.text;
+        txtMessage.autocorrectionType = UITextAutocorrectionTypeNo;
+        txtMessage.keyboardType = UIKeyboardTypeDefault;
+        txtMessage.returnKeyType = UIReturnKeyDone;
+        txtMessage.clearButtonMode = UITextFieldViewModeWhileEditing;
+        txtMessage.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        txtMessage.delegate = self;
+        
+        [self.view addSubview:txtMessage];
+        
+        [txtMessage setCenter:CGPointMake(768/2, 1024/2)];
+        [txtMessage becomeFirstResponder];
+    }
+    if (showItems && txtMessage) {
+        [txtMessage setDelegate:nil];
+        [txtMessage removeFromSuperview];
+        txtMessage = nil;
+    }
+    
+    [self.lblFontSize setHidden:showItems];
+    [self.btnLessFont setHidden:showItems];
+    [self.btnMoreFont setHidden:showItems];
 }
 
 #pragma mark initialization
@@ -78,6 +121,8 @@
     arrayImages = [[NSMutableArray alloc] init];
     arrayLabels = [[NSMutableArray alloc] init];
     
+    state = KNonState;
+    
     //obtener colores y tallas del plist 
     NSString *path = [[NSBundle mainBundle] pathForResource:@"DetailsProduct" ofType:@"plist"];
     NSDictionary *root = [NSDictionary dictionaryWithContentsOfFile:path];
@@ -86,7 +131,7 @@
     arraySizes = [[NSArray alloc] initWithArray:[root objectForKey:@"Size"]];
     arrayTextColor = [[NSArray alloc] initWithArray:[root objectForKey:@"TextColor"]];
     
-    [self putProductDetails];
+    //[self putProductDetails];
     [self putTextColors];
     
     //black is the default text color
@@ -105,7 +150,7 @@
         [aToolBar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Background_ToolBar.jpg"]] atIndex:0];
     }
     
-    [self.scrollTextColors setHidden:TRUE];
+    [self _setVisibleItemsForText:TRUE];
 }
 
 - (void)putImageProduct{
@@ -117,44 +162,6 @@
     
     [imgProduct setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_Customize", [[options objectAtIndex:selectedProduct] objectForKey:@"Name"]]]];
     
-}
-
-- (void)putProductDetails{
-    
-    //color from the plist
-    float width = 42;
-    float height = 37;
-    for (int i=0; i< [arrayColors count]; i++) {
-        
-        NSDictionary *color = [arrayColors objectAtIndex:i];
-        
-        UIButton *btnSize = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        [btnSize setFrame:CGRectMake(17, 10*(i+1) + height*i , width, height)];
-        [btnSize setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
-                                                    green:[[color objectForKey:@"Green"] floatValue]/255
-                                                     blue:[[color objectForKey:@"Blue"] floatValue]/255
-                                                    alpha:1.0]];
-        
-        [self.scrollColors addSubview:btnSize];
-        
-    }
-    
-    [self.scrollColors setContentSize:CGSizeMake( self.scrollColors.frame.size.width, 10 * [arrayColors count] + height*([arrayColors count]))];
-    //sizes from the plist
-    width = 42;
-    for (int i=0; i< [arraySizes count]; i++) {
-        
-        UIButton *btnSize = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        
-        [btnSize setFrame:CGRectMake(17, 10*(i+1) + height*i , width, height)];
-        [btnSize setTitle:[arraySizes objectAtIndex:i] forState:UIControlStateNormal];
-        
-        [self.scrollSizes addSubview:btnSize];
-        
-    }
-    
-    [self.scrollSizes setContentSize:CGSizeMake(self.scrollSizes.frame.size.width, 10 * [arraySizes count] + height*([arraySizes count]) )];
 }
 
 - (void)putTextColors{
@@ -241,6 +248,8 @@
         [arrayImages addObject:anImage];
     }
     
+    state = KNonState;
+    
 }
 
 - (void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
@@ -249,6 +258,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"error" message:@"Failed to saved the image" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
+    state = KNonState;
 }
 
 #pragma mark UIActionSheet Delegate
@@ -272,27 +282,36 @@
     
     NSLog(@"texto : %@", textField.text);
     
-    if (![@"" isEqualToString:txtMessage.text]) {
+    if (![@"" isEqualToString:txtMessage.text] ) {
         
-        NSDictionary *color = [arrayTextColor objectAtIndex:selectedTextColor];
-        IDACustomLabel *lblCustom = [[IDACustomLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 80)];
+        if ( state == KCreatingLabel) {
+            NSDictionary *color = [arrayTextColor objectAtIndex:selectedTextColor];
+            IDACustomLabel *lblCustom = [[IDACustomLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 80)];
+            
+            [lblCustom setText:txtMessage.text];
+            [lblCustom setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
+                                                    green:[[color objectForKey:@"Green"] floatValue]/255
+                                                     blue:[[color objectForKey:@"Blue"] floatValue]/255
+                                                    alpha:1.0]];
+            [lblCustom setBackgroundColor:[UIColor clearColor]];
+            [lblCustom setNumberOfLines:2];
+            [lblCustom setTextAlignment:NSTextAlignmentCenter];
+            [lblCustom setFont:[UIFont fontWithName:@"System" size:17.0f]];
+            [lblCustom setCenter:CGPointMake(viewContentSpace.frame.size.width/2, viewContentSpace.frame.size.height/2)];
+            [lblCustom setUserInteractionEnabled:TRUE];
+            [lblCustom sizeToFit];
+            lblCustom.imgContentSpace = viewContentSpace;
+            [viewContentSpace addSubview:lblCustom];
+            [viewContentSpace setUserInteractionEnabled:TRUE];
+            [arrayLabels addObject:lblCustom];
+        }else{
+            if (state == KEditingLabel) {
+                lastLabelTouched.text = textField.text;
+                [lastLabelTouched resizeToStretch];
+                [lastLabelTouched adjustHeight];
+            }
+        }
         
-        [lblCustom setText:txtMessage.text];
-        [lblCustom setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
-                                                green:[[color objectForKey:@"Green"] floatValue]/255
-                                                 blue:[[color objectForKey:@"Blue"] floatValue]/255
-                                                alpha:1.0]];
-        [lblCustom setBackgroundColor:[UIColor clearColor]];
-        [lblCustom setNumberOfLines:2];
-        [lblCustom setTextAlignment:NSTextAlignmentCenter];
-        [lblCustom setFont:[UIFont fontWithName:@"System" size:17.0f]];
-        [lblCustom setCenter:CGPointMake(viewContentSpace.frame.size.width/2, viewContentSpace.frame.size.height/2)];
-        [lblCustom setUserInteractionEnabled:TRUE];
-        [lblCustom sizeToFit];
-        lblCustom.imgContentSpace = viewContentSpace;
-        [viewContentSpace addSubview:lblCustom];
-        [viewContentSpace setUserInteractionEnabled:TRUE];
-        [arrayLabels addObject:lblCustom];
         
     }
     
@@ -333,13 +352,17 @@
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo",
                                   @"Choose From Library", nil];
     [actionSheet showInView:self.view];
+    
+    state = KCreatingImage;
 }
 
 - (IBAction)onTapWriteMessage:(id)sender {
     
-    if (txtMessage) {
+    if (state == KCreatingLabel) {
         return;
     }
+    
+    state = KCreatingLabel;
     
     UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onTapCancelCustomLabel:)];
     
@@ -452,7 +475,8 @@
     
     self.toolBar.items = arrayItems;
     
-    [self.scrollTextColors setHidden:TRUE];
+    [self _setVisibleItemsForText:TRUE];
+    state = KNonState;
 }
 
 - (IBAction)onTouchCancel{
@@ -559,7 +583,7 @@
     
     NSDictionary *color = [arrayTextColor objectAtIndex:[Sender tag]];
     
-    if (txtMessage == nil) {
+    if (state == KEditingLabel) {
         if (!isLastTouchedObjectLabel || lastLabelTouched == NULL) {
             return;
         }
@@ -577,6 +601,91 @@
     
 }
 
+- (IBAction)onTapChangeFontSize:(id)sender {
+    
+    if ([sender tag] == 0) {
+        [lastLabelTouched modifyTextSize:-1];
+    }else{
+        [lastLabelTouched modifyTextSize:1];
+    }
+    
+    [self.lblFontSize setText:[NSString stringWithFormat:@"%.0f", [lastLabelTouched _textSize]]];
+}
+
+#pragma mark - PopOverMethods
+-(IBAction)chooseColorButtonTapped:(id)sender
+{
+    if (_colorPickerPopover) {
+        [_colorPickerPopover dismissPopoverAnimated:YES];
+        _colorPickerPopover = nil;
+    }
+    
+    if (_colorPicker == nil) {
+        //Create the ColorPickerViewController.
+        _colorPicker = [[ColorPickerViewController alloc] initWithStyle:UITableViewStylePlain];
+        
+        //Set this VC as the delegate.
+        _colorPicker.delegate = self;
+    }
+    
+    if (_colorPickerPopover == nil) {
+        //The color picker popover is not showing. Show it.
+        _colorPickerPopover = [[UIPopoverController alloc] initWithContentViewController:_colorPicker];
+        [_colorPickerPopover presentPopoverFromBarButtonItem:(UIBarButtonItem *)sender
+                                    permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    } else {
+        //The color picker popover is showing. Hide it.
+        [_colorPickerPopover dismissPopoverAnimated:YES];
+        _colorPickerPopover = nil;
+    }
+}
+
+-(IBAction)chooseSizeButtonTapped:(id)sender{
+    
+    if (_colorPickerPopover) {
+        [_colorPickerPopover dismissPopoverAnimated:YES];
+        _colorPickerPopover = nil;
+    }
+    
+    if (_sizePicker == nil) {
+        //Create the ColorPickerViewController.
+        _sizePicker = [[SizesPickerViewController alloc] initWithStyle:UITableViewStylePlain];
+        
+        //Set this VC as the delegate.
+        _sizePicker.delegate = self;
+    }
+    
+    if (_colorPickerPopover == nil) {
+        //The color picker popover is not showing. Show it.
+        _colorPickerPopover = [[UIPopoverController alloc] initWithContentViewController:_sizePicker];
+        [_colorPickerPopover presentPopoverFromBarButtonItem:(UIBarButtonItem *)sender
+                                    permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    } else {
+        //The color picker popover is showing. Hide it.
+        [_colorPickerPopover dismissPopoverAnimated:YES];
+        _colorPickerPopover = nil;
+    }
+}
+
+#pragma mark - PickerDelegate method
+-(void)selectedColor:(int)posColor
+{
+    
+    //Dismiss the popover if it's showing.
+    if (_colorPickerPopover) {
+        [_colorPickerPopover dismissPopoverAnimated:YES];
+        _colorPickerPopover = nil;
+    }
+}
+
+-(void)selectedSize:(int)posColor{
+    
+    if (_colorPickerPopover) {
+        [_colorPickerPopover dismissPopoverAnimated:YES];
+        _colorPickerPopover = nil;
+    }
+}
+
 #pragma mark memory handling
 - (void)didReceiveMemoryWarning
 {
@@ -591,9 +700,10 @@
     [self setBtnCamara:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self setAToolBar:nil];
-    [self setScrollSizes:nil];
-    [self setScrollColors:nil];
     [self setScrollTextColors:nil];
+    [self setBtnMoreFont:nil];
+    [self setBtnLessFont:nil];
+    [self setLblFontSize:nil];
     [super viewDidUnload];
 }
 @end

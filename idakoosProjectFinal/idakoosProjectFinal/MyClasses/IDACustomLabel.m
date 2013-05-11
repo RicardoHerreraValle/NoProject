@@ -11,6 +11,7 @@
 @implementation IDACustomLabel
 
 @synthesize imgContentSpace;
+@synthesize _textSize;
 
 - (id)initWithFrame:(CGRect)frame// withContenSpace:(UIView *)imgSpace
 {
@@ -24,6 +25,8 @@
         UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
         
         UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+        
+        _textSize = 17.0f;
         
         [self addGestureRecognizer:rotateGesture];
         [self addGestureRecognizer:panGesture];
@@ -81,6 +84,52 @@
         self.frame.origin.x < 0 || self.frame.origin.y < 0) {
         self.center = temp;
     }
+}
+
+#pragma mark Setting Characters
+-(void)resizeToStretch{
+    float width = [self expectedWidth];
+    CGRect newFrame = [self frame];
+    newFrame.size.width = width;
+    [self setFrame:newFrame];
+}
+
+-(float)expectedWidth{
+    [self setNumberOfLines:1];
+    
+    CGSize maximumLabelSize = CGSizeMake(9999,self.frame.size.height);
+    
+    CGSize expectedLabelSize = [[self text] sizeWithFont:[self font]
+                                       constrainedToSize:maximumLabelSize
+                                           lineBreakMode:[self lineBreakMode]];
+    return expectedLabelSize.width;
+}
+- (void)adjustHeight {
+    
+    if (self.text == nil) {
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.bounds.size.width, 0);
+        return;
+    }
+    
+    CGSize aSize = self.bounds.size;
+    CGSize tmpSize = CGRectInfinite.size;
+    tmpSize.width = aSize.width;
+    
+    tmpSize = [self.text sizeWithFont:self.font constrainedToSize:tmpSize];
+    
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, aSize.width, tmpSize.height);
+}
+
+- (void)modifyTextSize:(float)factor{
+    
+    _textSize += factor;
+    if (_textSize < 0) {
+        _textSize = 0;
+    }
+    self.font = [self.font fontWithSize:_textSize];
+    [self setNumberOfLines:1];
+    [self resizeToStretch];
+    [self adjustHeight];
 }
 
 /*

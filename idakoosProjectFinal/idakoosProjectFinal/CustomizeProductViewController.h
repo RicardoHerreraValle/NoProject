@@ -15,7 +15,19 @@
 #import "IDALogoImage.h"
 #import "IDACustomLabel.h"
 
-@interface CustomizeProductViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate, UITextFieldDelegate>{
+#import "ColorPickerViewController.h"
+#import "SizesPickerViewController.h"
+
+enum KStateCustomize {
+    KNonState = 0,
+    KEditingLabel = 1,
+    KEditingImage = 2,
+    KCreatingLabel = 3,
+    KCreatingImage = 4
+    };
+
+@interface CustomizeProductViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate, UITextFieldDelegate,
+    ColorPickerDelegate, SizesPickerDelegate>{
     
     int selectedProduct;
     int selectedTextColor;
@@ -36,6 +48,8 @@
     IDACustomLabel *lastLabelTouched;
     
     UIToolbar *aToolBar;
+        
+    int state;
     
 }
 
@@ -46,9 +60,18 @@
 @property (strong, nonatomic) UIPopoverController *libraryPopoverController;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnCamara;
 @property (strong, nonatomic) IBOutlet UIToolbar *aToolBar;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollSizes;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollColors;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollTextColors;
+
+@property (strong, nonatomic) IBOutlet UIButton *btnLessFont;
+@property (strong, nonatomic) IBOutlet UIButton *btnMoreFont;
+@property (strong, nonatomic) IBOutlet UILabel *lblFontSize;
+
+@property (nonatomic, strong) ColorPickerViewController *colorPicker;
+@property (nonatomic, strong) SizesPickerViewController *sizePicker;
+@property (nonatomic, strong) UIPopoverController *colorPickerPopover;
+
+-(IBAction)chooseColorButtonTapped:(id)sender;
+-(IBAction)chooseSizeButtonTapped:(id)sender;
 
 
 - (void)putImageProduct;
@@ -63,12 +86,16 @@
 - (IBAction)onTapChangeSizeObject:(id)sender;
 - (void)onTapCancelCustomLabel:(id)Sender;
 - (void)onTapTextColor:(id)Sender;
+- (IBAction)onTapChangeFontSize:(id)sender;
 
 -(void)removeImage:(NSNotification *)notification;
 -(void)removeLabel:(NSNotification *)notification;
 
 -(void)touchedImage:(NSNotification *)notification;
 -(void)touchedLabel:(NSNotification *)notification;
+
+#pragma mark show methods
+- (void)_setVisibleItemsForText:(BOOL)showItems;
 
 #pragma mark align method
 - (IBAction)ontapAlignButton:(id)sender;

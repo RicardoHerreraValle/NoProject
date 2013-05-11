@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10DE8A7173DF58D007126B3 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10DE8A6173DF58D007126B3 /* ColorPickerViewController.m */; };
+		A10DE8AB173E04E0007126B3 /* SizesPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10DE8AA173E04DF007126B3 /* SizesPickerViewController.m */; };
 		A126253B16C6035100373311 /* DetailsProduct.plist in Resources */ = {isa = PBXBuildFile; fileRef = A126253A16C6035100373311 /* DetailsProduct.plist */; };
 		A136F45116A3C4C400223D57 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A136F45016A3C4C400223D57 /* MessageUI.framework */; };
 		A136F45416A3CAB900223D57 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A136F45316A3CAB900223D57 /* MobileCoreServices.framework */; };
@@ -44,6 +46,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A10DE8A5173DF58D007126B3 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
+		A10DE8A6173DF58D007126B3 /* ColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerViewController.m; sourceTree = "<group>"; };
+		A10DE8A9173E04DF007126B3 /* SizesPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizesPickerViewController.h; sourceTree = "<group>"; };
+		A10DE8AA173E04DF007126B3 /* SizesPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizesPickerViewController.m; sourceTree = "<group>"; };
 		A126253A16C6035100373311 /* DetailsProduct.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailsProduct.plist; sourceTree = "<group>"; };
 		A136F45016A3C4C400223D57 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A136F45316A3CAB900223D57 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -112,6 +118,10 @@
 				A136F45916A3CDD500223D57 /* IDALogoImage.m */,
 				A1E9FBDC16A61E74007D4E77 /* IDACustomLabel.h */,
 				A1E9FBDD16A61E74007D4E77 /* IDACustomLabel.m */,
+				A10DE8A5173DF58D007126B3 /* ColorPickerViewController.h */,
+				A10DE8A6173DF58D007126B3 /* ColorPickerViewController.m */,
+				A10DE8A9173E04DF007126B3 /* SizesPickerViewController.h */,
+				A10DE8AA173E04DF007126B3 /* SizesPickerViewController.m */,
 			);
 			path = MyClasses;
 			sourceTree = "<group>";
@@ -298,6 +308,8 @@
 				A1526A0F16A3795300AC23D0 /* CustomizeProductViewController.m in Sources */,
 				A136F45A16A3CDD500223D57 /* IDALogoImage.m in Sources */,
 				A1E9FBDE16A61E74007D4E77 /* IDACustomLabel.m in Sources */,
+				A10DE8A7173DF58D007126B3 /* ColorPickerViewController.m in Sources */,
+				A10DE8AB173E04E0007126B3 /* SizesPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +381,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: North South Studios LLC";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: North South Studios LLC";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -379,8 +391,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2D7B40B8-13EE-4867-83CA-9AE6C74CB722";
+				PROVISIONING_PROFILE = "53EFF53A-8BD6-4BC6-93D2-7AB1E5AF51AC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "53EFF53A-8BD6-4BC6-93D2-7AB1E5AF51AC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
