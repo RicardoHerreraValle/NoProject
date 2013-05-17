@@ -469,11 +469,13 @@
     [txtMessage removeFromSuperview];
     txtMessage = nil;
     
-    NSMutableArray *arrayItems = [[NSMutableArray alloc] initWithArray:self.toolBar.items];
-    
-    [arrayItems removeLastObject];
-    
-    self.toolBar.items = arrayItems;
+    if (state == KCreatingLabel) {
+        NSMutableArray *arrayItems = [[NSMutableArray alloc] initWithArray:self.toolBar.items];
+        
+        [arrayItems removeLastObject];
+        
+        self.toolBar.items = arrayItems;
+    }
     
     [self _setVisibleItemsForText:TRUE];
     state = KNonState;
