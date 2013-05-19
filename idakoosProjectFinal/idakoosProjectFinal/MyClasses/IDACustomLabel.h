@@ -23,8 +23,12 @@
 - (void)resizeToStretch;
 - (void)adjustHeight;
 - (void)modifyTextSize:(float)factor;
+- (void)modifyTextColor;
 
 @property(nonatomic, assign) UIView *imgContentSpace;
 @property(nonatomic) float _textSize;
+@property(nonatomic) float _Red;
+@property(nonatomic) float _Green;
+@property(nonatomic) float _Blue;
 
 @end

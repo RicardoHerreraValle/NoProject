@@ -19,6 +19,40 @@
 @synthesize aToolBar;
 
 #pragma mark notification methods
+
+-(void)receiveCustomLabel:(NSNotification *)notification{
+    IDACustomLabel *anLabel = [notification object];
+    
+    if (state == KEditingLabel) {
+        
+        [lastLabelTouched setText:anLabel.text];
+        [lastLabelTouched set_Red:anLabel._Red];
+        [lastLabelTouched set_Green:anLabel._Green];
+        [lastLabelTouched set_Blue:anLabel._Blue];
+        [lastLabelTouched set_textSize:anLabel._textSize];
+        
+        
+    }else{
+        if (state == KCreatingLabel) {
+            
+            [anLabel setCenter:CGPointMake(viewContentSpace.frame.size.width/2, viewContentSpace.frame.size.height/2)];
+            [anLabel setTextAlignment:NSTextAlignmentCenter];
+            [anLabel setUserInteractionEnabled:TRUE];
+            anLabel.imgContentSpace = viewContentSpace;
+            [viewContentSpace addSubview:anLabel];
+            [viewContentSpace setUserInteractionEnabled:TRUE];
+            [arrayLabels addObject:anLabel];
+        }
+    }
+    
+    [anLabel setFont:[UIFont fontWithName:@"System" size:anLabel._textSize]];
+    [anLabel modifyTextSize:0];
+    [anLabel sizeToFit];
+    
+    state = KNonState;
+    
+}
+
 -(void)removeImage:(NSNotification *)notification{
     IDALogoImage *anImage = (IDALogoImage *)[notification object];
     
@@ -64,42 +98,8 @@
 - (void)_setVisibleItemsForText:(BOOL)showItems{
     
     
-    [self.scrollTextColors setHidden:showItems];
-    if (!showItems) {
-        [self.lblFontSize setText:[NSString stringWithFormat:@"%.1f", [lastLabelTouched _textSize]] ];
-        
-        
-        if (txtMessage) {
-            [txtMessage setDelegate:nil];
-            [txtMessage removeFromSuperview];
-            txtMessage = nil;
-        }
-        txtMessage = [[UITextField alloc] initWithFrame:CGRectMake(50, 50, 300, 40)];
-        
-        txtMessage.borderStyle = UITextBorderStyleRoundedRect;
-        txtMessage.font = [UIFont systemFontOfSize:lastLabelTouched._textSize];
-        txtMessage.text = lastLabelTouched.text;
-        txtMessage.autocorrectionType = UITextAutocorrectionTypeNo;
-        txtMessage.keyboardType = UIKeyboardTypeDefault;
-        txtMessage.returnKeyType = UIReturnKeyDone;
-        txtMessage.clearButtonMode = UITextFieldViewModeWhileEditing;
-        txtMessage.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        txtMessage.delegate = self;
-        
-        [self.view addSubview:txtMessage];
-        
-        [txtMessage setCenter:CGPointMake(768/2, 1024/2)];
-        [txtMessage becomeFirstResponder];
-    }
-    if (showItems && txtMessage) {
-        [txtMessage setDelegate:nil];
-        [txtMessage removeFromSuperview];
-        txtMessage = nil;
-    }
+    [_btnEditLabel setHidden:showItems];
     
-    [self.lblFontSize setHidden:showItems];
-    [self.btnLessFont setHidden:showItems];
-    [self.btnMoreFont setHidden:showItems];
 }
 
 #pragma mark initialization
@@ -129,10 +129,6 @@
     
     arrayColors = [[NSArray alloc] initWithArray:[root objectForKey:@"Color"]];
     arraySizes = [[NSArray alloc] initWithArray:[root objectForKey:@"Size"]];
-    arrayTextColor = [[NSArray alloc] initWithArray:[root objectForKey:@"TextColor"]];
-    
-    //[self putProductDetails];
-    [self putTextColors];
     
     //black is the default text color
     selectedTextColor = 1;
@@ -142,6 +138,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeLabel:) name:@"removeCustomLabel_iPad" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(touchedImage:) name:@"touchImage_iPad" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(touchedLabel:) name:@"touchLabel_iPad" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveCustomLabel:) name:@"ReceiveCustomLabel_iPad" object:nil];
     
     
     if ([aToolBar respondsToSelector:@selector(setBackgroundImage:forToolbarPosition:barMetrics:)]) {
@@ -164,47 +161,6 @@
     
 }
 
-- (void)putTextColors{
-    
-    float width = 43;
-    
-    for (int i=0; i<[arrayTextColor count]/2; i++) {
-        NSDictionary *color = [arrayTextColor objectAtIndex:i];
-        
-        UIButton *btnTextColor = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        [btnTextColor setFrame:CGRectMake(10 * (i+1) + width * i, 10, width, 43)];
-        [btnTextColor setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
-                                                    green:[[color objectForKey:@"Green"] floatValue]/255
-                                                     blue:[[color objectForKey:@"Blue"] floatValue]/255
-                                                    alpha:1.0]];
-        
-        [btnTextColor setTag:i];
-        [btnTextColor addTarget:self action:@selector(onTapTextColor:) forControlEvents:UIControlEventTouchUpInside];
-        [self.scrollTextColors addSubview:btnTextColor];
-    }
-    
-    int i = 0;
-    
-    for (int k=[arrayTextColor count]/2; k<[arrayTextColor count]; k++) {
-        NSDictionary *color = [arrayTextColor objectAtIndex:k];
-        
-        UIButton *btnTextColor = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        [btnTextColor setFrame:CGRectMake(10 * (i+1) + width * i, 64, width, 43)];
-        [btnTextColor setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
-                                                         green:[[color objectForKey:@"Green"] floatValue]/255
-                                                          blue:[[color objectForKey:@"Blue"] floatValue]/255
-                                                         alpha:1.0]];
-        
-        [btnTextColor setTag:k];
-        [btnTextColor addTarget:self action:@selector(onTapTextColor:) forControlEvents:UIControlEventTouchUpInside];
-        [self.scrollTextColors addSubview:btnTextColor];
-        i++;
-    }
-    NSLog(@"width :%d",[arrayTextColor count]/2 +1);
-    [self.scrollTextColors setContentSize:CGSizeMake(9 * ([arrayTextColor count]/2 +3) + width*([arrayTextColor count]/2 +1), self.scrollTextColors.frame.size.height)];
-}
 
 #pragma mark CameraMethods
 - (void)chooseImagePhotoFromLibrary{
@@ -277,49 +233,6 @@
     
 }
 
-#pragma mark UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    
-    NSLog(@"texto : %@", textField.text);
-    
-    if (![@"" isEqualToString:txtMessage.text] ) {
-        
-        if ( state == KCreatingLabel) {
-            NSDictionary *color = [arrayTextColor objectAtIndex:selectedTextColor];
-            IDACustomLabel *lblCustom = [[IDACustomLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 80)];
-            
-            [lblCustom setText:txtMessage.text];
-            [lblCustom setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
-                                                    green:[[color objectForKey:@"Green"] floatValue]/255
-                                                     blue:[[color objectForKey:@"Blue"] floatValue]/255
-                                                    alpha:1.0]];
-            [lblCustom setBackgroundColor:[UIColor clearColor]];
-            [lblCustom setNumberOfLines:2];
-            [lblCustom setTextAlignment:NSTextAlignmentCenter];
-            [lblCustom setFont:[UIFont fontWithName:@"System" size:17.0f]];
-            [lblCustom setCenter:CGPointMake(viewContentSpace.frame.size.width/2, viewContentSpace.frame.size.height/2)];
-            [lblCustom setUserInteractionEnabled:TRUE];
-            [lblCustom sizeToFit];
-            lblCustom.imgContentSpace = viewContentSpace;
-            [viewContentSpace addSubview:lblCustom];
-            [viewContentSpace setUserInteractionEnabled:TRUE];
-            [arrayLabels addObject:lblCustom];
-        }else{
-            if (state == KEditingLabel) {
-                lastLabelTouched.text = textField.text;
-                [lastLabelTouched resizeToStretch];
-                [lastLabelTouched adjustHeight];
-            }
-        }
-        
-        
-    }
-    
-    [self onTapCancelCustomLabel:nil];
-    
-    return YES;
-}
-
 #pragma mark MFMailCompose Delegate
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
     
@@ -364,31 +277,12 @@
     
     state = KCreatingLabel;
     
-    UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onTapCancelCustomLabel:)];
+    EditLabelViewController *editLabelView = [[EditLabelViewController alloc] initWithNibName:@"EditLabelViewController" bundle:nil labelToEdit:nil];
     
-    NSMutableArray *arrayItems = [[NSMutableArray alloc] initWithArray:self.toolBar.items];
+    editLabelView.modalPresentationStyle = UIModalPresentationFormSheet;
     
-    [arrayItems addObject:btnCancel];
+    [self presentModalViewController:editLabelView animated:TRUE];
     
-    self.toolBar.items = arrayItems;
-    
-    txtMessage = [[UITextField alloc] initWithFrame:CGRectMake(50, 50, 300, 40)];
-    
-    txtMessage.borderStyle = UITextBorderStyleRoundedRect;
-    txtMessage.font = [UIFont systemFontOfSize:15];
-    txtMessage.placeholder = @"enter text";
-    txtMessage.autocorrectionType = UITextAutocorrectionTypeNo;
-    txtMessage.keyboardType = UIKeyboardTypeDefault;
-    txtMessage.returnKeyType = UIReturnKeyDone;
-    txtMessage.clearButtonMode = UITextFieldViewModeWhileEditing;
-    txtMessage.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    txtMessage.delegate = self;
-    
-    [self.view addSubview:txtMessage];
-    [txtMessage setCenter:CGPointMake(768/2, 1024/2)];
-    [txtMessage becomeFirstResponder];
-    
-    [self.scrollTextColors setHidden:FALSE];
 }
 
 - (IBAction)onTapExport:(id)sender {
@@ -463,25 +357,22 @@
     }
 }
 
-- (void)onTapCancelCustomLabel:(id)Sender{
+- (IBAction)onTapEditLabel:(id)sender {
     
-    [txtMessage setDelegate:nil];
-    [txtMessage removeFromSuperview];
-    txtMessage = nil;
+    EditLabelViewController *editLabelView = [[EditLabelViewController alloc] initWithNibName:@"EditLabelViewController" bundle:nil labelToEdit:lastLabelTouched];
     
-    if (state == KCreatingLabel) {
-        NSMutableArray *arrayItems = [[NSMutableArray alloc] initWithArray:self.toolBar.items];
-        
-        [arrayItems removeLastObject];
-        
-        self.toolBar.items = arrayItems;
-    }
+    editLabelView.modalPresentationStyle = UIModalPresentationFormSheet;
     
-    [self _setVisibleItemsForText:TRUE];
-    state = KNonState;
+    [self presentModalViewController:editLabelView animated:TRUE];
 }
 
 - (IBAction)onTouchCancel{
+    
+    if (_colorPickerPopover) {
+        [_colorPickerPopover dismissPopoverAnimated:YES];
+        _colorPickerPopover = nil;
+    }
+    
     [self dismissModalViewControllerAnimated:TRUE];
     
 }
@@ -581,39 +472,6 @@
     }
 }
 
-- (void)onTapTextColor:(id)Sender{
-    
-    NSDictionary *color = [arrayTextColor objectAtIndex:[Sender tag]];
-    
-    if (state == KEditingLabel) {
-        if (!isLastTouchedObjectLabel || lastLabelTouched == NULL) {
-            return;
-        }
-        [lastLabelTouched setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
-                                                       green:[[color objectForKey:@"Green"] floatValue]/255
-                                                        blue:[[color objectForKey:@"Blue"] floatValue]/255
-                                                       alpha:1.0]];
-    }else{
-        [txtMessage setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
-                                                 green:[[color objectForKey:@"Green"] floatValue]/255
-                                                  blue:[[color objectForKey:@"Blue"] floatValue]/255
-                                                 alpha:1.0]];
-        selectedTextColor = [Sender tag];
-    }
-    
-}
-
-- (IBAction)onTapChangeFontSize:(id)sender {
-    
-    if ([sender tag] == 0) {
-        [lastLabelTouched modifyTextSize:-1];
-    }else{
-        [lastLabelTouched modifyTextSize:1];
-    }
-    
-    [self.lblFontSize setText:[NSString stringWithFormat:@"%.0f", [lastLabelTouched _textSize]]];
-}
-
 #pragma mark - PopOverMethods
 -(IBAction)chooseColorButtonTapped:(id)sender
 {
@@ -702,10 +560,7 @@
     [self setBtnCamara:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self setAToolBar:nil];
-    [self setScrollTextColors:nil];
-    [self setBtnMoreFont:nil];
-    [self setBtnLessFont:nil];
-    [self setLblFontSize:nil];
+    [self setBtnEditLabel:nil];
     [super viewDidUnload];
 }
 @end

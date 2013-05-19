@@ -17,6 +17,7 @@
 
 #import "ColorPickerViewController.h"
 #import "SizesPickerViewController.h"
+#import "EditLabelViewController.h"
 
 enum KStateCustomize {
     KNonState = 0,
@@ -36,11 +37,8 @@ enum KStateCustomize {
     NSMutableArray *arrayImages;
     NSMutableArray *arrayLabels;
     
-    NSArray *arrayTextColor;
     NSArray *arrayColors;
     NSArray *arraySizes;
-    
-    UITextField *txtMessage;
     
     BOOL isLastTouchedObjectLabel;
     
@@ -60,11 +58,7 @@ enum KStateCustomize {
 @property (strong, nonatomic) UIPopoverController *libraryPopoverController;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnCamara;
 @property (strong, nonatomic) IBOutlet UIToolbar *aToolBar;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollTextColors;
-
-@property (strong, nonatomic) IBOutlet UIButton *btnLessFont;
-@property (strong, nonatomic) IBOutlet UIButton *btnMoreFont;
-@property (strong, nonatomic) IBOutlet UILabel *lblFontSize;
+@property (strong, nonatomic) IBOutlet UIButton *btnEditLabel;
 
 @property (nonatomic, strong) ColorPickerViewController *colorPicker;
 @property (nonatomic, strong) SizesPickerViewController *sizePicker;
@@ -75,8 +69,6 @@ enum KStateCustomize {
 
 
 - (void)putImageProduct;
-- (void)putProductDetails;
-- (void)putTextColors;
 
 - (IBAction)onTouchCancel;
 - (IBAction)onTapLoadImage:(id)sender;
@@ -84,10 +76,10 @@ enum KStateCustomize {
 - (IBAction)onTapExport:(id)sender;
 - (IBAction)onTapRotateObject:(id)sender;
 - (IBAction)onTapChangeSizeObject:(id)sender;
-- (void)onTapCancelCustomLabel:(id)Sender;
-- (void)onTapTextColor:(id)Sender;
-- (IBAction)onTapChangeFontSize:(id)sender;
+- (IBAction)onTapEditLabel:(id)sender;
 
+#pragma mark Notification Methods
+-(void)receiveCustomLabel:(NSNotification *)notification;
 -(void)removeImage:(NSNotification *)notification;
 -(void)removeLabel:(NSNotification *)notification;
 

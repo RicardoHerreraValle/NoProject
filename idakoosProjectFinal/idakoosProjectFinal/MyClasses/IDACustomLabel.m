@@ -132,6 +132,11 @@
     [self adjustHeight];
 }
 
+- (void)modifyTextColor{
+    
+    [self setTextColor:[UIColor colorWithRed:__Red/255.0f green:__Green/255.0f blue:__Blue/255.0f alpha:1.0f]];
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

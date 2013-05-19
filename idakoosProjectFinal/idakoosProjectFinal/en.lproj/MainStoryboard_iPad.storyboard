@@ -40,21 +40,6 @@
                                 <rect key="frame" x="0.0" y="140" width="768" height="732"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="C0r-5w-xSX">
-                                <rect key="frame" x="108" y="554" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onTapChangeFontSize:" destination="fgS-jO-u1c" eventType="touchUpInside" id="JpI-hW-FBy"/>
-                                </connections>
-                            </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="lus-EF-OMP">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -223,10 +208,6 @@
                                     <action selector="onTapSendTo:" destination="fgS-jO-u1c" eventType="touchUpInside" id="mz7-RV-Gwm"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="rlG-TB-enx">
-                                <rect key="frame" x="44" y="622" width="680" height="116"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4QI-aT-QuS">
                                 <rect key="frame" x="0.0" y="872" width="768" height="132"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -291,11 +272,11 @@
                                     <action selector="onTapChangeSizeObject:" destination="fgS-jO-u1c" eventType="touchUpInside" id="JfF-pc-J2Y"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Dgd-xw-RDW">
-                                <rect key="frame" x="44" y="554" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QrN-2J-jkw">
+                                <rect key="frame" x="20" y="67" width="73" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <state key="normal" title="-">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Edit">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -303,27 +284,17 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onTapChangeFontSize:" destination="fgS-jO-u1c" eventType="touchUpInside" id="Nwo-nJ-TFK"/>
+                                    <action selector="onTapEditLabel:" destination="fgS-jO-u1c" eventType="touchUpInside" id="5Gk-4p-Pfj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="17.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qn2-Cm-vmE">
-                                <rect key="frame" x="170" y="563" width="76" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="aToolBar" destination="lus-EF-OMP" id="k37-FY-eO1"/>
                         <outlet property="btnCamara" destination="xhV-MN-Gq0" id="fPp-TB-E6r"/>
-                        <outlet property="btnLessFont" destination="Dgd-xw-RDW" id="lxE-4M-sfk"/>
-                        <outlet property="btnMoreFont" destination="C0r-5w-xSX" id="Yxc-tz-2e8"/>
+                        <outlet property="btnEditLabel" destination="QrN-2J-jkw" id="kRV-r6-bIH"/>
                         <outlet property="imgProduct" destination="bvz-Fb-Dus" id="3fX-aa-76z"/>
-                        <outlet property="lblFontSize" destination="qn2-Cm-vmE" id="brQ-Cn-Cnm"/>
-                        <outlet property="scrollTextColors" destination="rlG-TB-enx" id="qx5-ml-TgS"/>
                         <outlet property="toolBar" destination="lus-EF-OMP" id="xYd-SA-DBN"/>
                         <outlet property="viewContentSpace" destination="MuE-Pq-wkE" id="1JU-HO-4ib"/>
                     </connections>
@@ -344,8 +315,8 @@
             <relationships>
                 <relationship kind="action" name="chooseColorButtonTapped:"/>
                 <relationship kind="action" name="chooseSizeButtonTapped:"/>
-                <relationship kind="action" name="onTapChangeFontSize:"/>
                 <relationship kind="action" name="onTapChangeSizeObject:"/>
+                <relationship kind="action" name="onTapEditLabel:"/>
                 <relationship kind="action" name="onTapExport:"/>
                 <relationship kind="action" name="onTapLoadImage:"/>
                 <relationship kind="action" name="onTapRotateObject:"/>
@@ -355,11 +326,8 @@
                 <relationship kind="action" name="ontapAlignButton:"/>
                 <relationship kind="outlet" name="aToolBar" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="btnCamara" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="btnLessFont" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnMoreFont" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnEditLabel" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="imgProduct" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblFontSize" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scrollTextColors" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="viewContentSpace" candidateClass="UIView"/>
             </relationships>
