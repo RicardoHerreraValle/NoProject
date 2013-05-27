@@ -9,10 +9,24 @@
 #import <UIKit/UIKit.h>
 #import "IDACustomLabel.h"
 
+enum KStateCustomize {
+    KNonState = 0,
+    KEditingLabel = 1,
+    KEditingImage = 2,
+    KCreatingLabel = 3,
+    KCreatingImage = 4,
+    KEditingAll = 5
+};
+
 @interface EditLabelViewController : UIViewController{
     
     IDACustomLabel *lblTexto;
     NSArray *arrayTextColor;
+    
+    NSMutableArray *arrayLabel;
+    NSMutableArray *arraytextEdit;
+    
+    int state;
     
 }
 
@@ -26,12 +40,18 @@
 // customize text
 - (IBAction)onTapModifyTextSize:(id)sender;
 
+- (void)customizeLabel;
+
 - (void)onTapTextColor:(id)Sender;
 //Customize view
 - (void)putTextColors;
+- (void)addTextView;
+- (void)removeTextView;
 
 //View Action
 - (IBAction)onTapCancel:(id)sender;
 - (IBAction)onTapSave:(id)sender;
+
+-(IBAction)onTapMoreOrLessLines:(id)sender;
 
 @end

@@ -21,27 +21,36 @@
     if (self) {
         // Custom initialization
         lblTexto = lblToEdit;
+        state = KEditingLabel;
         if (!lblTexto) {
-            NSDictionary *color = [arrayTextColor objectAtIndex:0];
-            lblTexto = [[IDACustomLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 80)];
-            
-            [lblTexto setText:@""];
-            [lblTexto set_Red:[[color objectForKey:@"Red"] floatValue]];
-            [lblTexto set_Green:[[color objectForKey:@"Green"] floatValue]];
-            [lblTexto set_Red:[[color objectForKey:@"Blue"] floatValue]];
-            [lblTexto setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
-                                                    green:[[color objectForKey:@"Green"] floatValue]/255
-                                                     blue:[[color objectForKey:@"Blue"] floatValue]/255
-                                                    alpha:1.0]];
-            [lblTexto setBackgroundColor:[UIColor clearColor]];
-            [lblTexto setNumberOfLines:2];
-            [lblTexto setTextAlignment:NSTextAlignmentCenter];
-            [lblTexto setFont:[UIFont fontWithName:@"System" size:17.0f]];
-            [lblTexto setUserInteractionEnabled:TRUE];
-            [lblTexto sizeToFit];
+            arrayLabel = [[NSMutableArray alloc] init];
+            arraytextEdit = [[NSMutableArray alloc] init];
+            state = KCreatingLabel;
+            [self customizeLabel];
         }
     }
     return self;
+}
+
+- (void)customizeLabel{
+    
+    NSDictionary *color = [arrayTextColor objectAtIndex:0];
+    lblTexto = [[IDACustomLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 80)];
+    
+    [lblTexto setText:@""];
+    [lblTexto set_Red:[[color objectForKey:@"Red"] floatValue]];
+    [lblTexto set_Green:[[color objectForKey:@"Green"] floatValue]];
+    [lblTexto set_Red:[[color objectForKey:@"Blue"] floatValue]];
+    [lblTexto setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
+                                           green:[[color objectForKey:@"Green"] floatValue]/255
+                                            blue:[[color objectForKey:@"Blue"] floatValue]/255
+                                           alpha:1.0]];
+    [lblTexto setBackgroundColor:[UIColor clearColor]];
+    [lblTexto setNumberOfLines:2];
+    [lblTexto setTextAlignment:NSTextAlignmentCenter];
+    [lblTexto setFont:[UIFont fontWithName:@"System" size:17.0f]];
+    [lblTexto setUserInteractionEnabled:TRUE];
+    [lblTexto sizeToFit];
 }
 
 - (void)viewDidLoad
@@ -76,7 +85,7 @@
             
         default:
             
-            if (lblTexto._textSize + constant > 30) {
+            if (lblTexto._textSize + constant > 40) {
                 return;
             }
             break;
@@ -145,6 +154,14 @@
     [self.scrollTextColors setContentSize:CGSizeMake(9 * ([arrayTextColor count]/2 +3) + width*([arrayTextColor count]/2 +1), self.scrollTextColors.frame.size.height)];
 }
 
+- (void)addTextView{
+    
+}
+
+- (void)removeTextView{
+    
+}
+
 #pragma mark View Actions
 
 - (IBAction)onTapCancel:(id)sender {
@@ -158,6 +175,10 @@
     [lblTexto modifyTextColor];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ReceiveCustomLabel_iPad" object:lblTexto];
     [self onTapCancel:NULL];
+}
+
+-(IBAction)onTapMoreOrLessLines:(id)sender{
+    
 }
 
 #pragma mark memory handling

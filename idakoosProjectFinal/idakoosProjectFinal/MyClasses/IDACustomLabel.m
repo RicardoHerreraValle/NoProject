@@ -27,6 +27,7 @@
         UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
         
         _textSize = 17.0f;
+        self._NumLines = 1;
         
         [self addGestureRecognizer:rotateGesture];
         [self addGestureRecognizer:panGesture];
@@ -127,7 +128,7 @@
         _textSize = 0;
     }
     self.font = [self.font fontWithSize:_textSize];
-    [self setNumberOfLines:1];
+    [self setNumberOfLines:__NumLines];
     [self resizeToStretch];
     [self adjustHeight];
 }

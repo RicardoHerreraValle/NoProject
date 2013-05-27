@@ -303,34 +303,38 @@
 
 - (IBAction)onTapRotateObject:(id)sender {
     
-    if (lastImageTouched == NULL && lastLabelTouched == NULL ) {
+    if ((lastImageTouched == NULL && lastLabelTouched == NULL ) && state != KEditingAll) {
         return;
     }
     
-    switch ([sender tag]) {
-        case 0://rotate to the right
-            if (isLastTouchedObjectLabel) {
-                lastLabelTouched.transform = CGAffineTransformRotate(lastLabelTouched.transform, M_PI/2);
-            }else{
-                lastImageTouched.transform = CGAffineTransformRotate(lastImageTouched.transform, M_PI/2);
-            }
-            break;
-        case 1://rotate to the left
-            if (isLastTouchedObjectLabel) {
-                lastLabelTouched.transform = CGAffineTransformRotate(lastLabelTouched.transform, -M_PI/2);
-            }else{
-                lastImageTouched.transform = CGAffineTransformRotate(lastImageTouched.transform, -M_PI/2);
-            }
-            break;
-            
-        default:
-            break;
+    int factor = 1;//rotate to the right
+    
+    if ([sender tag] == 1) {
+        factor = -1;//rotate to the left
     }
+    
+    if (state == KEditingAll) {
+        for (int i=0; i < [arrayLabels count]; i++) {
+            IDACustomLabel *anLabel = [arrayLabels objectAtIndex:i];
+            anLabel.transform = CGAffineTransformRotate(anLabel.transform, (M_PI*factor)/2);
+        }
+        for (int i=0; i < [arrayImages count]; i++) {
+            IDALogoImage *anImage = [arrayImages objectAtIndex:i];
+            anImage.transform = CGAffineTransformRotate(anImage.transform, (M_PI*factor)/2);
+        }
+    }else{
+        if (isLastTouchedObjectLabel) {
+            lastLabelTouched.transform = CGAffineTransformRotate(lastLabelTouched.transform, (M_PI*factor)/2);
+        }else{
+            lastImageTouched.transform = CGAffineTransformRotate(lastImageTouched.transform, (M_PI*factor)/2);
+        }
+    }
+
 }
 
 - (IBAction)onTapChangeSizeObject:(id)sender {
     
-    if (lastImageTouched == NULL && lastLabelTouched == NULL ) {
+    if ( (lastImageTouched == NULL && lastLabelTouched == NULL) && state != KEditingAll ) {
         return;
     }
     float scaleIncrease = 1.3;
@@ -338,18 +342,42 @@
     
     switch ([sender tag]) {
         case 0://increase size
-            if (isLastTouchedObjectLabel) {
-                lastLabelTouched.transform = CGAffineTransformScale(lastLabelTouched.transform, scaleIncrease, scaleIncrease);
+            if (state == KEditingAll) {
+                for (int i=0; i < [arrayLabels count]; i++) {
+                    IDACustomLabel *anLabel = [arrayLabels objectAtIndex:i];
+                    anLabel.transform = CGAffineTransformScale(anLabel.transform, scaleIncrease, scaleIncrease);
+                }
+                for (int i=0; i < [arrayImages count]; i++) {
+                    IDALogoImage *anImage = [arrayImages objectAtIndex:i];
+                    anImage.transform = CGAffineTransformScale(anImage.transform, scaleIncrease, scaleIncrease);
+                }
             }else{
-                lastImageTouched.transform = CGAffineTransformScale(lastImageTouched.transform, scaleIncrease, scaleIncrease);
+                if (isLastTouchedObjectLabel) {
+                    lastLabelTouched.transform = CGAffineTransformScale(lastLabelTouched.transform, scaleIncrease, scaleIncrease);
+                }else{
+                    lastImageTouched.transform = CGAffineTransformScale(lastImageTouched.transform, scaleIncrease, scaleIncrease);
+                }
             }
+            
             break;
         case 1://decrease size
-            if (isLastTouchedObjectLabel) {
-                lastLabelTouched.transform = CGAffineTransformScale(lastLabelTouched.transform, scaleDecrease, scaleDecrease);
+            if (state == KEditingAll) {
+                for (int i=0; i < [arrayLabels count]; i++) {
+                    IDACustomLabel *anLabel = [arrayLabels objectAtIndex:i];
+                    anLabel.transform = CGAffineTransformScale(anLabel.transform, scaleDecrease, scaleDecrease);
+                }
+                for (int i=0; i < [arrayImages count]; i++) {
+                    IDALogoImage *anImage = [arrayImages objectAtIndex:i];
+                    anImage.transform = CGAffineTransformScale(anImage.transform, scaleDecrease, scaleDecrease);
+                }
             }else{
-                lastImageTouched.transform = CGAffineTransformScale(lastImageTouched.transform, scaleDecrease, scaleDecrease);
+                if (isLastTouchedObjectLabel) {
+                    lastLabelTouched.transform = CGAffineTransformScale(lastLabelTouched.transform, scaleDecrease, scaleDecrease);
+                }else{
+                    lastImageTouched.transform = CGAffineTransformScale(lastImageTouched.transform, scaleDecrease, scaleDecrease);
+                }
             }
+            
             break;
             
         default:
@@ -366,6 +394,11 @@
     [self presentModalViewController:editLabelView animated:TRUE];
 }
 
+- (IBAction)ontapSelectAll:(id)sender {
+    
+    state = KEditingAll;
+}
+
 - (IBAction)onTouchCancel{
     
     if (_colorPickerPopover) {
@@ -379,7 +412,7 @@
 
 - (IBAction)ontapAlignButton:(id)sender{
     
-    if (lastLabelTouched == NULL && lastImageTouched == NULL) {
+    if ((lastLabelTouched == NULL && lastImageTouched == NULL) && state != KEditingAll ) {
         return;
     }
     
@@ -389,55 +422,135 @@
     //align buttons
     switch ([sender tag]) {
         case 0:{//Left
-            if (isLastTouchedObjectLabel) {
-                [lastLabelTouched setCenter:CGPointMake(lastLabelTouched.frame.size.width/2, lastLabelTouched.center.y)];
+            if (state == KEditingAll) {
+                for (int i=0; i < [arrayLabels count]; i++) {
+                    IDACustomLabel *anLabel = [arrayLabels objectAtIndex:i];
+                    [anLabel setCenter:CGPointMake(anLabel.frame.size.width/2, anLabel.center.y)];
+                    
+                }
+                for (int i=0; i < [arrayImages count]; i++) {
+                    IDALogoImage *anImage = [arrayImages objectAtIndex:i];
+                    [anImage setCenter:CGPointMake(anImage.frame.size.width/2, anImage.center.y)];
+                }
             }else{
-                [lastImageTouched setCenter:CGPointMake(lastImageTouched.frame.size.width/2, lastImageTouched.center.y)];
+                if (isLastTouchedObjectLabel) {
+                    [lastLabelTouched setCenter:CGPointMake(lastLabelTouched.frame.size.width/2, lastLabelTouched.center.y)];
+                }else{
+                    [lastImageTouched setCenter:CGPointMake(lastImageTouched.frame.size.width/2, lastImageTouched.center.y)];
+                }
             }
+            
             
         }   break;
         case 1:{//Center
-            if (isLastTouchedObjectLabel) {
-                [lastLabelTouched setCenter:CGPointMake(viewWidth/2 ,
-                                                        lastLabelTouched.center.y)];
+            if (state == KEditingAll) {
+                for (int i=0; i < [arrayLabels count]; i++) {
+                    IDACustomLabel *anLabel = [arrayLabels objectAtIndex:i];
+                    [anLabel setCenter:CGPointMake(viewWidth/2 ,
+                                                            anLabel.center.y)];
+                }
+                for (int i=0; i < [arrayImages count]; i++) {
+                    IDALogoImage *anImage = [arrayImages objectAtIndex:i];
+                    [anImage setCenter:CGPointMake(viewWidth/2 ,
+                                                            anImage.center.y)];
+                }
             }else{
-                [lastImageTouched setCenter:CGPointMake(viewWidth/2 ,
-                                                        lastImageTouched.center.y)];
+                if (isLastTouchedObjectLabel) {
+                    [lastLabelTouched setCenter:CGPointMake(viewWidth/2 ,
+                                                            lastLabelTouched.center.y)];
+                }else{
+                    [lastImageTouched setCenter:CGPointMake(viewWidth/2 ,
+                                                            lastImageTouched.center.y)];
+                }
             }
             
         }   break;
         case 2:{//Right
-            if (isLastTouchedObjectLabel) {
-                [lastLabelTouched setCenter:CGPointMake(viewWidth - lastLabelTouched.frame.size.width/2, lastLabelTouched.center.y)];
+            if (state == KEditingAll) {
+                for (int i=0; i < [arrayLabels count]; i++) {
+                    IDACustomLabel *anLabel = [arrayLabels objectAtIndex:i];
+                    [anLabel setCenter:CGPointMake(viewWidth - anLabel.frame.size.width/2, anLabel.center.y)];
+                    
+                }
+                for (int i=0; i < [arrayImages count]; i++) {
+                    IDALogoImage *anImage = [arrayImages objectAtIndex:i];
+                    [anImage setCenter:CGPointMake(viewWidth - anImage.frame.size.width/2, anImage.center.y)];
+                }
             }else{
-                [lastImageTouched setCenter:CGPointMake(viewWidth - lastImageTouched.frame.size.width/2, lastImageTouched.center.y)];
+                if (isLastTouchedObjectLabel) {
+                    [lastLabelTouched setCenter:CGPointMake(viewWidth - lastLabelTouched.frame.size.width/2, lastLabelTouched.center.y)];
+                }else{
+                    [lastImageTouched setCenter:CGPointMake(viewWidth - lastImageTouched.frame.size.width/2, lastImageTouched.center.y)];
+                }
             }
+            
             
         }   break;
         case 3:{//Top
-            if (isLastTouchedObjectLabel) {
-                [lastLabelTouched setCenter:CGPointMake(lastLabelTouched.center.x, lastLabelTouched.frame.size.height/2)];
+            if (state == KEditingAll) {
+                for (int i=0; i < [arrayLabels count]; i++) {
+                    IDACustomLabel *anLabel = [arrayLabels objectAtIndex:i];
+                    [anLabel setCenter:CGPointMake(anLabel.center.x, anLabel.frame.size.height/2)];
+                }
+                for (int i=0; i < [arrayImages count]; i++) {
+                    IDALogoImage *anImage = [arrayImages objectAtIndex:i];
+                    [anImage setCenter:CGPointMake(anImage.center.x, anImage.frame.size.height/2)];
+                    
+                }
             }else{
-                [lastImageTouched setCenter:CGPointMake(lastImageTouched.center.x, lastImageTouched.frame.size.height/2)];
+                if (isLastTouchedObjectLabel) {
+                    [lastLabelTouched setCenter:CGPointMake(lastLabelTouched.center.x, lastLabelTouched.frame.size.height/2)];
+                }else{
+                    [lastImageTouched setCenter:CGPointMake(lastImageTouched.center.x, lastImageTouched.frame.size.height/2)];
+                }
             }
+            
         }   break;
         case 4:{//Middle
-            if (isLastTouchedObjectLabel) {
-                [lastLabelTouched setCenter:CGPointMake(lastLabelTouched.center.x ,
-                                                        viewHeight/2)];
+            if (state == KEditingAll) {
+                for (int i=0; i < [arrayLabels count]; i++) {
+                    IDACustomLabel *anLabel = [arrayLabels objectAtIndex:i];
+                    [anLabel setCenter:CGPointMake(anLabel.center.x ,
+                                                            viewHeight/2)];
+                }
+                for (int i=0; i < [arrayImages count]; i++) {
+                    IDALogoImage *anImage = [arrayImages objectAtIndex:i];
+                    [anImage setCenter:CGPointMake(anImage.center.x ,
+                                                            viewHeight/2)];
+                }
             }else{
-                [lastImageTouched setCenter:CGPointMake(lastImageTouched.center.x ,
-                                                        viewHeight/2)];
+                if (isLastTouchedObjectLabel) {
+                    [lastLabelTouched setCenter:CGPointMake(lastLabelTouched.center.x ,
+                                                            viewHeight/2)];
+                }else{
+                    [lastImageTouched setCenter:CGPointMake(lastImageTouched.center.x ,
+                                                            viewHeight/2)];
+                }
             }
+            
         }   break;
         case 5:{//Bottom
-            if (isLastTouchedObjectLabel) {
-                [lastLabelTouched setCenter:CGPointMake(lastLabelTouched.center.x,
-                                                        viewHeight - lastLabelTouched.frame.size.height/2)];
+            if (state == KEditingAll) {
+                for (int i=0; i < [arrayLabels count]; i++) {
+                    IDACustomLabel *anLabel = [arrayLabels objectAtIndex:i];
+                    [anLabel setCenter:CGPointMake(anLabel.center.x,
+                                                        viewHeight - anLabel.frame.size.height/2)];
+                }
+                for (int i=0; i < [arrayImages count]; i++) {
+                    IDALogoImage *anImage = [arrayImages objectAtIndex:i];
+                    [anImage setCenter:CGPointMake(anImage.center.x ,
+                                                        viewHeight - anImage.frame.size.height/2)];
+                }
             }else{
-                [lastImageTouched setCenter:CGPointMake(lastImageTouched.center.x ,
-                                                        viewHeight - lastImageTouched.frame.size.height/2)];
+                if (isLastTouchedObjectLabel) {
+                    [lastLabelTouched setCenter:CGPointMake(lastLabelTouched.center.x,
+                                                            viewHeight - lastLabelTouched.frame.size.height/2)];
+                }else{
+                    [lastImageTouched setCenter:CGPointMake(lastImageTouched.center.x ,
+                                                            viewHeight - lastImageTouched.frame.size.height/2)];
+                }
             }
+            
         }   break;
             
         default:
@@ -561,6 +674,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self setAToolBar:nil];
     [self setBtnEditLabel:nil];
+    [self setBtnSelectAll:nil];
     [super viewDidUnload];
 }
 @end

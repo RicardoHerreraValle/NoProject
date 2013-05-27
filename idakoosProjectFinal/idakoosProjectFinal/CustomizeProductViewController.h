@@ -19,13 +19,7 @@
 #import "SizesPickerViewController.h"
 #import "EditLabelViewController.h"
 
-enum KStateCustomize {
-    KNonState = 0,
-    KEditingLabel = 1,
-    KEditingImage = 2,
-    KCreatingLabel = 3,
-    KCreatingImage = 4
-    };
+
 
 @interface CustomizeProductViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate, UITextFieldDelegate,
     ColorPickerDelegate, SizesPickerDelegate>{
@@ -59,6 +53,7 @@ enum KStateCustomize {
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnCamara;
 @property (strong, nonatomic) IBOutlet UIToolbar *aToolBar;
 @property (strong, nonatomic) IBOutlet UIButton *btnEditLabel;
+@property (strong, nonatomic) IBOutlet UIButton *btnSelectAll;
 
 @property (nonatomic, strong) ColorPickerViewController *colorPicker;
 @property (nonatomic, strong) SizesPickerViewController *sizePicker;
@@ -77,6 +72,7 @@ enum KStateCustomize {
 - (IBAction)onTapRotateObject:(id)sender;
 - (IBAction)onTapChangeSizeObject:(id)sender;
 - (IBAction)onTapEditLabel:(id)sender;
+- (IBAction)ontapSelectAll:(id)sender;
 
 #pragma mark Notification Methods
 -(void)receiveCustomLabel:(NSNotification *)notification;
