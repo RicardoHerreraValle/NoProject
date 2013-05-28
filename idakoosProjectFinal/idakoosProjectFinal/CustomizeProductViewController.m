@@ -21,33 +21,42 @@
 #pragma mark notification methods
 
 -(void)receiveCustomLabel:(NSNotification *)notification{
-    IDACustomLabel *anLabel = [notification object];
+    NSMutableArray *arrayCustomLabel = [notification object];
     
     if (state == KEditingLabel) {
+        
+        IDACustomLabel *anLabel = [arrayCustomLabel objectAtIndex:0];
         
         [lastLabelTouched setText:anLabel.text];
         [lastLabelTouched set_Red:anLabel._Red];
         [lastLabelTouched set_Green:anLabel._Green];
         [lastLabelTouched set_Blue:anLabel._Blue];
+        [lastLabelTouched modifyTextColor];
         [lastLabelTouched set_textSize:anLabel._textSize];
+        [lastLabelTouched set_PosColor:anLabel._PosColor];
+        [lastLabelTouched setFont:[UIFont fontWithName:@"System" size:anLabel._textSize]];
+        [lastLabelTouched modifyTextSize:0];
+        [lastLabelTouched sizeToFit];
         
         
     }else{
         if (state == KCreatingLabel) {
+            for (int i =0; i < [arrayCustomLabel count]; i++) {
+                IDACustomLabel *anLabel = [arrayCustomLabel objectAtIndex:i];
+                [anLabel setCenter:CGPointMake(viewContentSpace.frame.size.width/2, viewContentSpace.frame.size.height/2)];
+                [anLabel setTextAlignment:NSTextAlignmentCenter];
+                [anLabel setUserInteractionEnabled:TRUE];
+                anLabel.imgContentSpace = viewContentSpace;
+                [viewContentSpace addSubview:anLabel];
+                [viewContentSpace setUserInteractionEnabled:TRUE];
+                [arrayLabels addObject:anLabel];
+                [anLabel setFont:[UIFont fontWithName:@"System" size:anLabel._textSize]];
+                [anLabel modifyTextSize:0];
+                [anLabel sizeToFit];
+            }
             
-            [anLabel setCenter:CGPointMake(viewContentSpace.frame.size.width/2, viewContentSpace.frame.size.height/2)];
-            [anLabel setTextAlignment:NSTextAlignmentCenter];
-            [anLabel setUserInteractionEnabled:TRUE];
-            anLabel.imgContentSpace = viewContentSpace;
-            [viewContentSpace addSubview:anLabel];
-            [viewContentSpace setUserInteractionEnabled:TRUE];
-            [arrayLabels addObject:anLabel];
         }
     }
-    
-    [anLabel setFont:[UIFont fontWithName:@"System" size:anLabel._textSize]];
-    [anLabel modifyTextSize:0];
-    [anLabel sizeToFit];
     
     state = KNonState;
     

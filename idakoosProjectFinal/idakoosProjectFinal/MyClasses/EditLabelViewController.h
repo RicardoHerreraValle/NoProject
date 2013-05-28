@@ -28,11 +28,15 @@ enum KStateCustomize {
     
     int state;
     
+    float _size;
+    int _posColor;
 }
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollTextColors;
 @property (strong, nonatomic) IBOutlet UITextField *txtTexto;
 @property (strong, nonatomic) IBOutlet UILabel *lblSize;
+@property (strong, nonatomic) IBOutlet UIButton *btnAddText;
+@property (strong, nonatomic) IBOutlet UIButton *btnRemoveText;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
           labelToEdit:(IDACustomLabel *)lblToEdit;
@@ -40,7 +44,8 @@ enum KStateCustomize {
 // customize text
 - (IBAction)onTapModifyTextSize:(id)sender;
 
-- (void)customizeLabel;
+- (void)customizeLabel:(NSString *)text;
+- (void)customizeTextFields;
 
 - (void)onTapTextColor:(id)Sender;
 //Customize view

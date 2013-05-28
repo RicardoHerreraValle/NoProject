@@ -26,8 +26,9 @@
         
         UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
         
-        _textSize = 17.0f;
+        _textSize = 16.0f;
         self._NumLines = 1;
+        self._PosColor = 1; // default color Black
         
         [self addGestureRecognizer:rotateGesture];
         [self addGestureRecognizer:panGesture];

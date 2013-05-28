@@ -22,41 +22,55 @@
         // Custom initialization
         lblTexto = lblToEdit;
         state = KEditingLabel;
+        
         if (!lblTexto) {
-            arrayLabel = [[NSMutableArray alloc] init];
-            arraytextEdit = [[NSMutableArray alloc] init];
             state = KCreatingLabel;
-            [self customizeLabel];
+            _size = 16.0f;
+            _posColor = 1;
+            
+            
+        }else{
+            _size = lblTexto._textSize;
+            _posColor = lblTexto._PosColor;
         }
     }
     return self;
 }
 
-- (void)customizeLabel{
+- (void)customizeLabel:(NSString *)text{
     
-    NSDictionary *color = [arrayTextColor objectAtIndex:0];
-    lblTexto = [[IDACustomLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 80)];
+    NSDictionary *color = [arrayTextColor objectAtIndex:_posColor];
+    IDACustomLabel *lblNew = [[IDACustomLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 80)];
     
-    [lblTexto setText:@""];
-    [lblTexto set_Red:[[color objectForKey:@"Red"] floatValue]];
-    [lblTexto set_Green:[[color objectForKey:@"Green"] floatValue]];
-    [lblTexto set_Red:[[color objectForKey:@"Blue"] floatValue]];
-    [lblTexto setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
+    [lblNew setText:text];
+    [lblNew set_Red:[[color objectForKey:@"Red"] floatValue]];
+    [lblNew set_Green:[[color objectForKey:@"Green"] floatValue]];
+    [lblNew set_Blue:[[color objectForKey:@"Blue"] floatValue]];
+    [lblNew setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
                                            green:[[color objectForKey:@"Green"] floatValue]/255
                                             blue:[[color objectForKey:@"Blue"] floatValue]/255
                                            alpha:1.0]];
-    [lblTexto setBackgroundColor:[UIColor clearColor]];
-    [lblTexto setNumberOfLines:2];
-    [lblTexto setTextAlignment:NSTextAlignmentCenter];
-    [lblTexto setFont:[UIFont fontWithName:@"System" size:17.0f]];
-    [lblTexto setUserInteractionEnabled:TRUE];
-    [lblTexto sizeToFit];
+    [lblNew setBackgroundColor:[UIColor clearColor]];
+    [lblNew setNumberOfLines:1];
+    [lblNew setTextAlignment:NSTextAlignmentCenter];
+    [lblNew setFont:[UIFont fontWithName:@"System" size:_size]];
+    lblNew._textSize = _size;
+    lblNew._PosColor = _posColor;
+    [lblNew setUserInteractionEnabled:TRUE];
+    [lblNew sizeToFit];
+    
+    [arrayLabel addObject:lblNew];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    //initialize variables
+    arrayLabel = [[NSMutableArray alloc] init];
+    arraytextEdit = [[NSMutableArray alloc] init];
+    [arraytextEdit addObject:_txtTexto];
     
     //obtener colores y tallas del plist
     NSString *path = [[NSBundle mainBundle] pathForResource:@"DetailsProduct" ofType:@"plist"];
@@ -66,48 +80,65 @@
     [self putTextColors];
     
     _txtTexto.text = lblTexto.text;
-    _txtTexto.font = [UIFont fontWithName:@"System" size:lblTexto._textSize];
+    _txtTexto.font = [UIFont fontWithName:@"System" size:_size];
+    
+    if (lblTexto) {
+        [self.btnRemoveText setHidden:TRUE];
+        [self.btnAddText setHidden:TRUE];
+        [self customizeTextFields];
+        self.lblSize.text = [NSString stringWithFormat:@"%.2f", _size];
+    }
+    
 }
 
 #pragma mark customize text
 
 - (IBAction)onTapModifyTextSize:(id)sender {
     
-    float constant = 0.5;
+    float constant = 2;
     
     switch ([sender tag]) {
         case 0:
             constant *= -1;
-            if (lblTexto._textSize + constant <= 5) {
+            if (_size + constant <= 5) {
                 return;
             }
             break;
             
         default:
             
-            if (lblTexto._textSize + constant > 40) {
+            if (_size + constant > 40) {
                 return;
             }
             break;
     }
     
     
-    
-    [lblTexto set_textSize:lblTexto._textSize + constant];
+    _size += constant;
 
-    self.lblSize.text = [NSString stringWithFormat:@"%.2f", lblTexto._textSize];
+    self.lblSize.text = [NSString stringWithFormat:@"%.2f", _size];
     
 }
 
 - (void)onTapTextColor:(id)Sender{
-    NSDictionary *color = [arrayTextColor objectAtIndex:[Sender tag]];
-    [lblTexto set_Red:[[color objectForKey:@"Red"] floatValue]];
-    [lblTexto set_Green:[[color objectForKey:@"Green"] floatValue]];
-    [lblTexto set_Blue:[[color objectForKey:@"Blue"] floatValue]];
-    [_txtTexto setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
+    
+    
+    _posColor = [Sender tag];
+    
+    [self customizeTextFields];
+}
+
+- (void)customizeTextFields{
+    
+    NSDictionary *color = [arrayTextColor objectAtIndex:_posColor];
+    
+    for (int i = 0; i < [arraytextEdit count]; i++) {
+        UITextField *aTxt = [arraytextEdit objectAtIndex:i];
+        [aTxt setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
                                            green:[[color objectForKey:@"Green"] floatValue]/255
                                             blue:[[color objectForKey:@"Blue"] floatValue]/255
                                            alpha:1.0]];
+    }
 }
 
 #pragma mark customize view
@@ -156,10 +187,36 @@
 
 - (void)addTextView{
     
+    if ([arraytextEdit count] < 5) {
+        UITextField *txtToAdd = [[UITextField alloc] initWithFrame:CGRectMake(61, 43 + ((30+10)*[arraytextEdit count]), 299, 30)];
+        
+        [txtToAdd setText:@""];
+        [txtToAdd setTextAlignment:NSTextAlignmentCenter];
+        [txtToAdd setBorderStyle:UITextBorderStyleRoundedRect];
+        NSDictionary *color = [arrayTextColor objectAtIndex:_posColor];
+        [txtToAdd setTextColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
+                                           green:[[color objectForKey:@"Green"] floatValue]/255
+                                            blue:[[color objectForKey:@"Blue"] floatValue]/255
+                                           alpha:1.0]];
+        
+        [self.view addSubview:txtToAdd];
+        [arraytextEdit addObject:txtToAdd];
+        [_btnAddText setCenter:CGPointMake(_btnAddText.center.x, txtToAdd.center.y)];
+        [_btnRemoveText setCenter:CGPointMake(_btnRemoveText.center.x, txtToAdd.center.y)];
+    }
+    
 }
 
 - (void)removeTextView{
     
+    if ([arraytextEdit count] > 1) {
+        UITextField *txtCampo  = [arraytextEdit lastObject];
+        [txtCampo removeFromSuperview];
+        [arraytextEdit removeLastObject];
+        
+        [_btnAddText setCenter:CGPointMake(_btnAddText.center.x, ((UITextField* )[arraytextEdit lastObject]).center.y)];
+        [_btnRemoveText setCenter:CGPointMake(_btnRemoveText.center.x, ((UITextField* )[arraytextEdit lastObject]).center.y)];
+    }
 }
 
 #pragma mark View Actions
@@ -170,15 +227,28 @@
 
 - (IBAction)onTapSave:(id)sender {
     
-    //send Label modified
-    lblTexto.text = _txtTexto.text;
-    [lblTexto modifyTextColor];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReceiveCustomLabel_iPad" object:lblTexto];
+    for (int i = 0; i< [arraytextEdit count]; i++) {
+        UITextField *txtTemp = [arraytextEdit objectAtIndex:i];
+        if (![@"" isEqualToString:txtTemp.text]) {
+            [self customizeLabel:txtTemp.text];
+            IDACustomLabel *aLabel = [arrayLabel lastObject];
+            [aLabel modifyTextColor];
+        }
+    
+    }
+    if ([arrayLabel count] > 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReceiveCustomLabel_iPad" object:arrayLabel];
+    }
     [self onTapCancel:NULL];
 }
 
 -(IBAction)onTapMoreOrLessLines:(id)sender{
     
+    if ([sender tag] == 0) {
+        [self addTextView];
+    }else{
+        [self removeTextView];
+    }
 }
 
 #pragma mark memory handling
@@ -193,6 +263,8 @@
     [self setScrollTextColors:nil];
     [self setTxtTexto:nil];
     [self setLblSize:nil];
+    [self setBtnAddText:nil];
+    [self setBtnRemoveText:nil];
     [super viewDidUnload];
 }
 @end

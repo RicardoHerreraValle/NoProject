@@ -31,5 +31,6 @@
 @property(nonatomic) float _Green;
 @property(nonatomic) float _Blue;
 @property(nonatomic) int _NumLines;
+@property(nonatomic) int _PosColor;
 
 @end
