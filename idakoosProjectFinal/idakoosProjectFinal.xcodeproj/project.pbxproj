@@ -44,7 +44,6 @@
 		A1AF0E3317639ED500A760B3 /* 60sekuntia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0117639ED500A760B3 /* 60sekuntia.ttf */; };
 		A1AF0E3417639ED500A760B3 /* aaaiight!.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0217639ED500A760B3 /* aaaiight!.ttf */; };
 		A1AF0E3517639ED500A760B3 /* Anja Eliane.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0317639ED500A760B3 /* Anja Eliane.ttf */; };
-		A1AF0E3617639ED500A760B3 /* Arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0417639ED500A760B3 /* Arial.ttf */; };
 		A1AF0E3717639ED500A760B3 /* Armalite Rifle.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0517639ED500A760B3 /* Armalite Rifle.ttf */; };
 		A1AF0E3817639ED500A760B3 /* barcode font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0617639ED500A760B3 /* barcode font.ttf */; };
 		A1AF0E3917639ED500A760B3 /* BD Cartoon Shout.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0717639ED500A760B3 /* BD Cartoon Shout.ttf */; };
@@ -55,22 +54,22 @@
 		A1AF0E3E17639ED500A760B3 /* Cartoonist 2 BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0C17639ED500A760B3 /* Cartoonist 2 BoldItalic.ttf */; };
 		A1AF0E3F17639ED500A760B3 /* Chinese Takeaway.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0D17639ED500A760B3 /* Chinese Takeaway.ttf */; };
 		A1AF0E4017639ED500A760B3 /* CooperBlackStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0E17639ED500A760B3 /* CooperBlackStd.otf */; };
-		A1AF0E4117639ED500A760B3 /* Cowboys.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0F17639ED500A760B3 /* Cowboys.ttf */; };
+		A1AF0E4117639ED500A760B3 /* Cowboys(1).ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E0F17639ED500A760B3 /* Cowboys(1).ttf */; };
 		A1AF0E4217639ED500A760B3 /* Crazy Harold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1017639ED500A760B3 /* Crazy Harold.ttf */; };
 		A1AF0E4317639ED500A760B3 /* Data Trash.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1117639ED500A760B3 /* Data Trash.ttf */; };
 		A1AF0E4417639ED500A760B3 /* Dearest.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1217639ED500A760B3 /* Dearest.ttf */; };
 		A1AF0E4517639ED500A760B3 /* dearJoe 2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1317639ED500A760B3 /* dearJoe 2.ttf */; };
 		A1AF0E4617639ED500A760B3 /* Establo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1417639ED500A760B3 /* Establo.ttf */; };
 		A1AF0E4717639ED500A760B3 /* Flores.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1517639ED500A760B3 /* Flores.ttf */; };
-		A1AF0E4817639ED500A760B3 /* GoodGirl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1617639ED500A760B3 /* GoodGirl.ttf */; };
+		A1AF0E4817639ED500A760B3 /* GoodGirl(1).ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1617639ED500A760B3 /* GoodGirl(1).ttf */; };
 		A1AF0E4917639ED500A760B3 /* green piloww.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1717639ED500A760B3 /* green piloww.ttf */; };
 		A1AF0E4A17639ED500A760B3 /* Green Screen.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1817639ED500A760B3 /* Green Screen.ttf */; };
 		A1AF0E4B17639ED500A760B3 /* Grinched Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1917639ED500A760B3 /* Grinched Regular.ttf */; };
 		A1AF0E4C17639ED500A760B3 /* GROBOLD.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1A17639ED500A760B3 /* GROBOLD.ttf */; };
-		A1AF0E4D17639ED500A760B3 /* Gyparody.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1B17639ED500A760B3 /* Gyparody.ttf */; };
+		A1AF0E4D17639ED500A760B3 /* Gyparody(1).ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1B17639ED500A760B3 /* Gyparody(1).ttf */; };
 		A1AF0E4E17639ED500A760B3 /* Helldorado.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1C17639ED500A760B3 /* Helldorado.ttf */; };
 		A1AF0E4F17639ED500A760B3 /* Horseshoes And Lemonade.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1D17639ED500A760B3 /* Horseshoes And Lemonade.ttf */; };
-		A1AF0E5017639ED500A760B3 /* Impacted.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1E17639ED500A760B3 /* Impacted.ttf */; };
+		A1AF0E5017639ED500A760B3 /* Impacted(1).ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1E17639ED500A760B3 /* Impacted(1).ttf */; };
 		A1AF0E5117639ED500A760B3 /* Incised 901 Nord Italic BT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E1F17639ED500A760B3 /* Incised 901 Nord Italic BT.ttf */; };
 		A1AF0E5217639ED500A760B3 /* Independence.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E2017639ED500A760B3 /* Independence.ttf */; };
 		A1AF0E5317639ED500A760B3 /* Informal 011 Black BT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E2117639ED500A760B3 /* Informal 011 Black BT.ttf */; };
@@ -146,7 +145,6 @@
 		A1AF0E0117639ED500A760B3 /* 60sekuntia.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 60sekuntia.ttf; sourceTree = "<group>"; };
 		A1AF0E0217639ED500A760B3 /* aaaiight!.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "aaaiight!.ttf"; sourceTree = "<group>"; };
 		A1AF0E0317639ED500A760B3 /* Anja Eliane.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Anja Eliane.ttf"; sourceTree = "<group>"; };
-		A1AF0E0417639ED500A760B3 /* Arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arial.ttf; sourceTree = "<group>"; };
 		A1AF0E0517639ED500A760B3 /* Armalite Rifle.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Armalite Rifle.ttf"; sourceTree = "<group>"; };
 		A1AF0E0617639ED500A760B3 /* barcode font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "barcode font.ttf"; sourceTree = "<group>"; };
 		A1AF0E0717639ED500A760B3 /* BD Cartoon Shout.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BD Cartoon Shout.ttf"; sourceTree = "<group>"; };
@@ -157,22 +155,22 @@
 		A1AF0E0C17639ED500A760B3 /* Cartoonist 2 BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cartoonist 2 BoldItalic.ttf"; sourceTree = "<group>"; };
 		A1AF0E0D17639ED500A760B3 /* Chinese Takeaway.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chinese Takeaway.ttf"; sourceTree = "<group>"; };
 		A1AF0E0E17639ED500A760B3 /* CooperBlackStd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CooperBlackStd.otf; sourceTree = "<group>"; };
-		A1AF0E0F17639ED500A760B3 /* Cowboys.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cowboys.ttf; sourceTree = "<group>"; };
+		A1AF0E0F17639ED500A760B3 /* Cowboys(1).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cowboys(1).ttf"; sourceTree = "<group>"; };
 		A1AF0E1017639ED500A760B3 /* Crazy Harold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Crazy Harold.ttf"; sourceTree = "<group>"; };
 		A1AF0E1117639ED500A760B3 /* Data Trash.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Data Trash.ttf"; sourceTree = "<group>"; };
 		A1AF0E1217639ED500A760B3 /* Dearest.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dearest.ttf; sourceTree = "<group>"; };
 		A1AF0E1317639ED500A760B3 /* dearJoe 2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dearJoe 2.ttf"; sourceTree = "<group>"; };
 		A1AF0E1417639ED500A760B3 /* Establo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Establo.ttf; sourceTree = "<group>"; };
 		A1AF0E1517639ED500A760B3 /* Flores.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Flores.ttf; sourceTree = "<group>"; };
-		A1AF0E1617639ED500A760B3 /* GoodGirl.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GoodGirl.ttf; sourceTree = "<group>"; };
+		A1AF0E1617639ED500A760B3 /* GoodGirl(1).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GoodGirl(1).ttf"; sourceTree = "<group>"; };
 		A1AF0E1717639ED500A760B3 /* green piloww.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "green piloww.ttf"; sourceTree = "<group>"; };
 		A1AF0E1817639ED500A760B3 /* Green Screen.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Green Screen.ttf"; sourceTree = "<group>"; };
 		A1AF0E1917639ED500A760B3 /* Grinched Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Grinched Regular.ttf"; sourceTree = "<group>"; };
 		A1AF0E1A17639ED500A760B3 /* GROBOLD.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GROBOLD.ttf; sourceTree = "<group>"; };
-		A1AF0E1B17639ED500A760B3 /* Gyparody.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Gyparody.ttf; sourceTree = "<group>"; };
+		A1AF0E1B17639ED500A760B3 /* Gyparody(1).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gyparody(1).ttf"; sourceTree = "<group>"; };
 		A1AF0E1C17639ED500A760B3 /* Helldorado.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helldorado.ttf; sourceTree = "<group>"; };
 		A1AF0E1D17639ED500A760B3 /* Horseshoes And Lemonade.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Horseshoes And Lemonade.ttf"; sourceTree = "<group>"; };
-		A1AF0E1E17639ED500A760B3 /* Impacted.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Impacted.ttf; sourceTree = "<group>"; };
+		A1AF0E1E17639ED500A760B3 /* Impacted(1).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Impacted(1).ttf"; sourceTree = "<group>"; };
 		A1AF0E1F17639ED500A760B3 /* Incised 901 Nord Italic BT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Incised 901 Nord Italic BT.ttf"; sourceTree = "<group>"; };
 		A1AF0E2017639ED500A760B3 /* Independence.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Independence.ttf; sourceTree = "<group>"; };
 		A1AF0E2117639ED500A760B3 /* Informal 011 Black BT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Informal 011 Black BT.ttf"; sourceTree = "<group>"; };
@@ -341,7 +339,6 @@
 				A1AF0E0117639ED500A760B3 /* 60sekuntia.ttf */,
 				A1AF0E0217639ED500A760B3 /* aaaiight!.ttf */,
 				A1AF0E0317639ED500A760B3 /* Anja Eliane.ttf */,
-				A1AF0E0417639ED500A760B3 /* Arial.ttf */,
 				A1AF0E0517639ED500A760B3 /* Armalite Rifle.ttf */,
 				A1AF0E0617639ED500A760B3 /* barcode font.ttf */,
 				A1AF0E0717639ED500A760B3 /* BD Cartoon Shout.ttf */,
@@ -352,22 +349,22 @@
 				A1AF0E0C17639ED500A760B3 /* Cartoonist 2 BoldItalic.ttf */,
 				A1AF0E0D17639ED500A760B3 /* Chinese Takeaway.ttf */,
 				A1AF0E0E17639ED500A760B3 /* CooperBlackStd.otf */,
-				A1AF0E0F17639ED500A760B3 /* Cowboys.ttf */,
+				A1AF0E0F17639ED500A760B3 /* Cowboys(1).ttf */,
 				A1AF0E1017639ED500A760B3 /* Crazy Harold.ttf */,
 				A1AF0E1117639ED500A760B3 /* Data Trash.ttf */,
 				A1AF0E1217639ED500A760B3 /* Dearest.ttf */,
 				A1AF0E1317639ED500A760B3 /* dearJoe 2.ttf */,
 				A1AF0E1417639ED500A760B3 /* Establo.ttf */,
 				A1AF0E1517639ED500A760B3 /* Flores.ttf */,
-				A1AF0E1617639ED500A760B3 /* GoodGirl.ttf */,
+				A1AF0E1617639ED500A760B3 /* GoodGirl(1).ttf */,
 				A1AF0E1717639ED500A760B3 /* green piloww.ttf */,
 				A1AF0E1817639ED500A760B3 /* Green Screen.ttf */,
 				A1AF0E1917639ED500A760B3 /* Grinched Regular.ttf */,
 				A1AF0E1A17639ED500A760B3 /* GROBOLD.ttf */,
-				A1AF0E1B17639ED500A760B3 /* Gyparody.ttf */,
+				A1AF0E1B17639ED500A760B3 /* Gyparody(1).ttf */,
 				A1AF0E1C17639ED500A760B3 /* Helldorado.ttf */,
 				A1AF0E1D17639ED500A760B3 /* Horseshoes And Lemonade.ttf */,
-				A1AF0E1E17639ED500A760B3 /* Impacted.ttf */,
+				A1AF0E1E17639ED500A760B3 /* Impacted(1).ttf */,
 				A1AF0E1F17639ED500A760B3 /* Incised 901 Nord Italic BT.ttf */,
 				A1AF0E2017639ED500A760B3 /* Independence.ttf */,
 				A1AF0E2117639ED500A760B3 /* Informal 011 Black BT.ttf */,
@@ -468,7 +465,6 @@
 				A1AF0E3317639ED500A760B3 /* 60sekuntia.ttf in Resources */,
 				A1AF0E3417639ED500A760B3 /* aaaiight!.ttf in Resources */,
 				A1AF0E3517639ED500A760B3 /* Anja Eliane.ttf in Resources */,
-				A1AF0E3617639ED500A760B3 /* Arial.ttf in Resources */,
 				A1AF0E3717639ED500A760B3 /* Armalite Rifle.ttf in Resources */,
 				A1AF0E3817639ED500A760B3 /* barcode font.ttf in Resources */,
 				A1AF0E3917639ED500A760B3 /* BD Cartoon Shout.ttf in Resources */,
@@ -479,22 +475,22 @@
 				A1AF0E3E17639ED500A760B3 /* Cartoonist 2 BoldItalic.ttf in Resources */,
 				A1AF0E3F17639ED500A760B3 /* Chinese Takeaway.ttf in Resources */,
 				A1AF0E4017639ED500A760B3 /* CooperBlackStd.otf in Resources */,
-				A1AF0E4117639ED500A760B3 /* Cowboys.ttf in Resources */,
+				A1AF0E4117639ED500A760B3 /* Cowboys(1).ttf in Resources */,
 				A1AF0E4217639ED500A760B3 /* Crazy Harold.ttf in Resources */,
 				A1AF0E4317639ED500A760B3 /* Data Trash.ttf in Resources */,
 				A1AF0E4417639ED500A760B3 /* Dearest.ttf in Resources */,
 				A1AF0E4517639ED500A760B3 /* dearJoe 2.ttf in Resources */,
 				A1AF0E4617639ED500A760B3 /* Establo.ttf in Resources */,
 				A1AF0E4717639ED500A760B3 /* Flores.ttf in Resources */,
-				A1AF0E4817639ED500A760B3 /* GoodGirl.ttf in Resources */,
+				A1AF0E4817639ED500A760B3 /* GoodGirl(1).ttf in Resources */,
 				A1AF0E4917639ED500A760B3 /* green piloww.ttf in Resources */,
 				A1AF0E4A17639ED500A760B3 /* Green Screen.ttf in Resources */,
 				A1AF0E4B17639ED500A760B3 /* Grinched Regular.ttf in Resources */,
 				A1AF0E4C17639ED500A760B3 /* GROBOLD.ttf in Resources */,
-				A1AF0E4D17639ED500A760B3 /* Gyparody.ttf in Resources */,
+				A1AF0E4D17639ED500A760B3 /* Gyparody(1).ttf in Resources */,
 				A1AF0E4E17639ED500A760B3 /* Helldorado.ttf in Resources */,
 				A1AF0E4F17639ED500A760B3 /* Horseshoes And Lemonade.ttf in Resources */,
-				A1AF0E5017639ED500A760B3 /* Impacted.ttf in Resources */,
+				A1AF0E5017639ED500A760B3 /* Impacted(1).ttf in Resources */,
 				A1AF0E5117639ED500A760B3 /* Incised 901 Nord Italic BT.ttf in Resources */,
 				A1AF0E5217639ED500A760B3 /* Independence.ttf in Resources */,
 				A1AF0E5317639ED500A760B3 /* Informal 011 Black BT.ttf in Resources */,
