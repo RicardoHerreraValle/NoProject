@@ -27,6 +27,7 @@
         UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
         
         _textSize = 16.0f;
+        self._font = @"System";
         self._NumLines = 1;
         self._PosColor = 1; // default color Black
         
@@ -128,7 +129,7 @@
     if (_textSize < 0) {
         _textSize = 0;
     }
-    self.font = [self.font fontWithSize:_textSize];
+    self.font = [UIFont fontWithName:__font size:_textSize];
     [self setNumberOfLines:__NumLines];
     [self resizeToStretch];
     [self adjustHeight];

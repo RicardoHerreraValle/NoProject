@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "IDACustomLabel.h"
+#import "FontsPickerViewController.h"
 
 enum KStateCustomize {
     KNonState = 0,
@@ -18,13 +19,15 @@ enum KStateCustomize {
     KEditingAll = 5
 };
 
-@interface EditLabelViewController : UIViewController{
+@interface EditLabelViewController : UIViewController<FontsPickerDelegate>{
     
     IDACustomLabel *lblTexto;
     NSArray *arrayTextColor;
     
     NSMutableArray *arrayLabel;
     NSMutableArray *arraytextEdit;
+    
+    NSString *_font;
     
     int state;
     
@@ -35,8 +38,12 @@ enum KStateCustomize {
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollTextColors;
 @property (strong, nonatomic) IBOutlet UITextField *txtTexto;
 @property (strong, nonatomic) IBOutlet UILabel *lblSize;
+@property (strong, nonatomic) IBOutlet UILabel *lblFont;
 @property (strong, nonatomic) IBOutlet UIButton *btnAddText;
 @property (strong, nonatomic) IBOutlet UIButton *btnRemoveText;
+
+@property (nonatomic, strong) FontsPickerViewController *fontPicker;
+@property (nonatomic, strong) UIPopoverController *fontPickerPopover;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
           labelToEdit:(IDACustomLabel *)lblToEdit;
@@ -46,6 +53,7 @@ enum KStateCustomize {
 
 - (void)customizeLabel:(NSString *)text;
 - (void)customizeTextFields;
+- (IBAction)onTapSelectFont:(id)sender;
 
 - (void)onTapTextColor:(id)Sender;
 //Customize view

@@ -362,7 +362,9 @@
                 }
             }else{
                 if (isLastTouchedObjectLabel) {
-                    lastLabelTouched.transform = CGAffineTransformScale(lastLabelTouched.transform, scaleIncrease, scaleIncrease);
+                    //lastLabelTouched.transform = CGAffineTransformScale(lastLabelTouched.transform, scaleIncrease, scaleIncrease);
+                    //[lastLabelTouched set_textSize:lastLabelTouched._textSize + 2.0];
+                    [lastLabelTouched modifyTextSize:2];
                 }else{
                     lastImageTouched.transform = CGAffineTransformScale(lastImageTouched.transform, scaleIncrease, scaleIncrease);
                 }
@@ -381,7 +383,8 @@
                 }
             }else{
                 if (isLastTouchedObjectLabel) {
-                    lastLabelTouched.transform = CGAffineTransformScale(lastLabelTouched.transform, scaleDecrease, scaleDecrease);
+                    //lastLabelTouched.transform = CGAffineTransformScale(lastLabelTouched.transform, scaleDecrease, scaleDecrease);
+                    [lastLabelTouched modifyTextSize:-2];
                 }else{
                     lastImageTouched.transform = CGAffineTransformScale(lastImageTouched.transform, scaleDecrease, scaleDecrease);
                 }

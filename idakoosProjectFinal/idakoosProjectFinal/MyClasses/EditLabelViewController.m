@@ -27,11 +27,12 @@
             state = KCreatingLabel;
             _size = 16.0f;
             _posColor = 1;
-            
+            _font = @"60sekuntia";
             
         }else{
             _size = lblTexto._textSize;
             _posColor = lblTexto._PosColor;
+            _font = lblTexto._font;
         }
     }
     return self;
@@ -53,9 +54,10 @@
     [lblNew setBackgroundColor:[UIColor clearColor]];
     [lblNew setNumberOfLines:1];
     [lblNew setTextAlignment:NSTextAlignmentCenter];
-    [lblNew setFont:[UIFont fontWithName:@"System" size:_size]];
+    [lblNew setFont:[UIFont fontWithName:_font size:_size]];
     lblNew._textSize = _size;
     lblNew._PosColor = _posColor;
+    lblNew._font = _font;
     [lblNew setUserInteractionEnabled:TRUE];
     [lblNew sizeToFit];
     
@@ -89,6 +91,17 @@
         self.lblSize.text = [NSString stringWithFormat:@"%.2f", _size];
     }
     
+    [self.lblFont setFont:[UIFont fontWithName:_font size:30.0f]];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:TRUE];
+    
+    if (_fontPickerPopover) {
+        [_fontPickerPopover dismissPopoverAnimated:YES];
+        _fontPickerPopover = nil;
+    }
 }
 
 #pragma mark customize text
@@ -138,6 +151,35 @@
                                            green:[[color objectForKey:@"Green"] floatValue]/255
                                             blue:[[color objectForKey:@"Blue"] floatValue]/255
                                            alpha:1.0]];
+    }
+}
+
+- (IBAction)onTapSelectFont:(id)sender {
+    
+    UIButton *aButton = (UIButton *)sender;
+    
+    //Hide popover
+    if (_fontPickerPopover) {
+        [_fontPickerPopover dismissPopoverAnimated:YES];
+        _fontPickerPopover = nil;
+    }
+    
+    if (_fontPicker == nil) {
+        //Create the FontPickerViewController.
+        _fontPicker = [[FontsPickerViewController alloc] initWithStyle:UITableViewStylePlain];
+        
+        //Set this VC as the delegate.
+        _fontPicker.delegate = self;
+    }
+    
+    if (_fontPickerPopover == nil) {
+        //The font picker popover is not showing. Show it.
+        _fontPickerPopover = [[UIPopoverController alloc] initWithContentViewController:_fontPicker];
+        [_fontPickerPopover presentPopoverFromRect:aButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:TRUE];
+    } else {
+        //The font picker popover is showing. Hide it.
+        [_fontPickerPopover dismissPopoverAnimated:YES];
+        _fontPickerPopover = nil;
     }
 }
 
@@ -199,10 +241,11 @@
                                             blue:[[color objectForKey:@"Blue"] floatValue]/255
                                            alpha:1.0]];
         
+        [self.btnAddText setCenter:CGPointMake(self.btnAddText.center.x, txtToAdd.center.y)];
+        [self.btnRemoveText setCenter:CGPointMake(self.btnRemoveText.center.x, txtToAdd.center.y)];
         [self.view addSubview:txtToAdd];
         [arraytextEdit addObject:txtToAdd];
-        [_btnAddText setCenter:CGPointMake(_btnAddText.center.x, txtToAdd.center.y)];
-        [_btnRemoveText setCenter:CGPointMake(_btnRemoveText.center.x, txtToAdd.center.y)];
+        
     }
     
 }
@@ -214,8 +257,8 @@
         [txtCampo removeFromSuperview];
         [arraytextEdit removeLastObject];
         
-        [_btnAddText setCenter:CGPointMake(_btnAddText.center.x, ((UITextField* )[arraytextEdit lastObject]).center.y)];
-        [_btnRemoveText setCenter:CGPointMake(_btnRemoveText.center.x, ((UITextField* )[arraytextEdit lastObject]).center.y)];
+        [self.btnAddText setCenter:CGPointMake(_btnAddText.center.x, ((UITextField* )[arraytextEdit lastObject]).center.y)];
+        [self.btnRemoveText setCenter:CGPointMake(_btnRemoveText.center.x, ((UITextField* )[arraytextEdit lastObject]).center.y)];
     }
 }
 
@@ -251,6 +294,13 @@
     }
 }
 
+#pragma mark fontDelegate
+-(void)SelectedFont:(NSString *)theFont{
+    _font = [theFont substringToIndex:theFont.length - 4];
+    [self.lblFont setFont:[UIFont fontWithName:_font size:30.0f]];
+}
+
+
 #pragma mark memory handling
 - (void)didReceiveMemoryWarning
 {
@@ -265,6 +315,7 @@
     [self setLblSize:nil];
     [self setBtnAddText:nil];
     [self setBtnRemoveText:nil];
+    [self setLblFont:nil];
     [super viewDidUnload];
 }
 @end

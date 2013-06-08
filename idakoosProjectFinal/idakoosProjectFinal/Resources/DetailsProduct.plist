@@ -342,9 +342,58 @@
 			<integer>51</integer>
 		</dict>
 	</array>
-	<key>TextFonts</key>
+	<key>TextFont</key>
 	<array>
-		<string></string>
+		<string>1456Gutenberg Bold.ttf</string>
+		<string>321impact.ttf</string>
+		<string>60sekuntia.ttf</string>
+		<string>aaaiight!.ttf</string>
+		<string>Anja Eliane.ttf</string>
+		<string>arial.ttf</string>
+		<string>Armalite Rifle.ttf</string>
+		<string>barcode font.ttf</string>
+		<string>BD Cartoon Shout.ttf</string>
+		<string>billieBob.ttf</string>
+		<string>Bloody.ttf</string>
+		<string>Bogusflow.TTF</string>
+		<string>BorisBlackBloxx.ttf</string>
+		<string>Cartoonist 2 BoldItalic.ttf</string>
+		<string>Chinese Takeaway.ttf</string>
+		<string>CooperBlackStd.otf</string>
+		<string>cowboys.ttf</string>
+		<string>Crazy Harold.ttf</string>
+		<string>Data Trash.ttf</string>
+		<string>Dearest.ttf</string>
+		<string>dearJoe 2.ttf</string>
+		<string>Establo.ttf</string>
+		<string>Flores.ttf</string>
+		<string>GoodGirl.ttf</string>
+		<string>green piloww.ttf</string>
+		<string>Green Screen.ttf</string>
+		<string>Grinched Regular.ttf</string>
+		<string>GROBOLD.ttf</string>
+		<string>Gyparody.ttf</string>
+		<string>Helldorado.ttf</string>
+		<string>Horseshoes And Lemonade.ttf</string>
+		<string>Impacted.ttf</string>
+		<string>Incised 901 Nord Italic BT.ttf</string>
+		<string>Independence.ttf</string>
+		<string>Informal 011 Black BT.ttf</string>
+		<string>JerseyLetters.ttf</string>
+		<string>Joint by PizzaDude.ttf</string>
+		<string>Justice Solid.ttf</string>
+		<string>Komika Axis.ttf</string>
+		<string>Komikahuna.ttf</string>
+		<string>Komix.ttf</string>
+		<string>LCD ITC-Normal.ttf</string>
+		<string>Mandingo.ttf</string>
+		<string>Lucia BT.ttf</string>
+		<string>Marcelle Script.ttf</string>
+		<string>Ozone.ttf</string>
+		<string>TeamSpirit.ttf</string>
+		<string>Vectroid.ttf</string>
+		<string>Yikes!.ttf</string>
+		<string>Zreaks NFI.ttf</string>
 	</array>
 </dict>
 </plist>

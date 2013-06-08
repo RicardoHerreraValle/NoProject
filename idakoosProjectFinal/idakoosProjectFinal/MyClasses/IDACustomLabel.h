@@ -32,5 +32,6 @@
 @property(nonatomic) float _Blue;
 @property(nonatomic) int _NumLines;
 @property(nonatomic) int _PosColor;
+@property(nonatomic) NSString *_font;
 
 @end

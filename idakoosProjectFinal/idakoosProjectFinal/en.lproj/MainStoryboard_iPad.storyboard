@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="BabyBodySuits_Customize.png" id="bvz-Fb-Dus">
-                                <rect key="frame" x="0.0" y="140" width="768" height="732"/>
+                                <rect key="frame" x="135" y="158" width="499" height="650"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="lus-EF-OMP">
@@ -77,7 +77,7 @@
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" id="MuE-Pq-wkE">
-                                <rect key="frame" x="264" y="311" width="392" height="303"/>
+                                <rect key="frame" x="308" y="339" width="257" height="214"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -325,6 +325,38 @@
         <image name="btn_rotateLeft.png" width="48" height="48"/>
         <image name="btn_rotateRight.png" width="48" height="48"/>
     </resources>
+    <classes>
+        <class className="CustomizeProductViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomizeProductViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="chooseColorButtonTapped:"/>
+                <relationship kind="action" name="chooseSizeButtonTapped:"/>
+                <relationship kind="action" name="onTapChangeSizeObject:"/>
+                <relationship kind="action" name="onTapEditLabel:"/>
+                <relationship kind="action" name="onTapExport:"/>
+                <relationship kind="action" name="onTapLoadImage:"/>
+                <relationship kind="action" name="onTapRotateObject:"/>
+                <relationship kind="action" name="onTapSendTo:"/>
+                <relationship kind="action" name="onTapWriteMessage:"/>
+                <relationship kind="action" name="onTouchCancel"/>
+                <relationship kind="action" name="ontapAlignButton:"/>
+                <relationship kind="action" name="ontapSelectAll:"/>
+                <relationship kind="outlet" name="aToolBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="btnCamara" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnEditLabel" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnSelectAll" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="imgProduct" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="viewContentSpace" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="scrollMenu" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
