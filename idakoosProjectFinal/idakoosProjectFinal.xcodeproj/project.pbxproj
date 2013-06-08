@@ -40,7 +40,6 @@
 		A1797E1816877E86005E521D /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1797E1616877E86005E521D /* MainStoryboard_iPad.storyboard */; };
 		A1797E1B16877E86005E521D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1797E1A16877E86005E521D /* ViewController.m */; };
 		A1A8BD3B1760126100446CE8 /* FontsPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A8BD3A1760126100446CE8 /* FontsPickerViewController.m */; };
-		A1AF0E691763ABA600A760B3 /* GoodGirl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AF0E681763ABA600A760B3 /* GoodGirl.ttf */; };
 		A1D2789616C370130075C3AB /* Background_ToolBar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1D2789516C370130075C3AB /* Background_ToolBar.jpg */; };
 		A1D3F95D1745FD350057629E /* EditLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D3F95B1745FD350057629E /* EditLabelViewController.m */; };
 		A1D3F95E1745FD350057629E /* EditLabelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D3F95C1745FD350057629E /* EditLabelViewController.xib */; };
@@ -93,7 +92,6 @@
 		A1797E1A16877E86005E521D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A1A8BD391760126000446CE8 /* FontsPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontsPickerViewController.h; sourceTree = "<group>"; };
 		A1A8BD3A1760126100446CE8 /* FontsPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontsPickerViewController.m; sourceTree = "<group>"; };
-		A1AF0E681763ABA600A760B3 /* GoodGirl.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GoodGirl.ttf; sourceTree = "<group>"; };
 		A1D2789516C370130075C3AB /* Background_ToolBar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Background_ToolBar.jpg; sourceTree = "<group>"; };
 		A1D3F95A1745FD350057629E /* EditLabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLabelViewController.h; sourceTree = "<group>"; };
 		A1D3F95B1745FD350057629E /* EditLabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLabelViewController.m; sourceTree = "<group>"; };
@@ -144,7 +142,7 @@
 		A15269E716A3554400AC23D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A1AF0E671763AB8700A760B3 /* Fuentes */,
+				A1AF0E6A1763ABE300A760B3 /* fuentes */,
 				A15269E816A3554400AC23D0 /* Images */,
 				A1526A0616A35B6900AC23D0 /* MenuOptions.plist */,
 				A126253A16C6035100373311 /* DetailsProduct.plist */,
@@ -235,12 +233,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A1AF0E671763AB8700A760B3 /* Fuentes */ = {
+		A1AF0E6A1763ABE300A760B3 /* fuentes */ = {
 			isa = PBXGroup;
 			children = (
-				A1AF0E681763ABA600A760B3 /* GoodGirl.ttf */,
 			);
-			path = Fuentes;
+			path = fuentes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,7 +314,6 @@
 				A1E6ABDC16F19B960027A95E /* btn_rotateLeft.png in Resources */,
 				A1E6ABDD16F19B960027A95E /* btn_rotateRight.png in Resources */,
 				A1D3F95E1745FD350057629E /* EditLabelViewController.xib in Resources */,
-				A1AF0E691763ABA600A760B3 /* GoodGirl.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
