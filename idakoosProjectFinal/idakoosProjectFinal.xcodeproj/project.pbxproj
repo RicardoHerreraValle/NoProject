@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63189CE8176B65D600B8FCE1 /* BabyBodySuits_Customize.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63189CE7176B65D600B8FCE1 /* BabyBodySuits_Customize.jpg */; };
+		63189CEA176B6C5F00B8FCE1 /* TShirt_Customize.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63189CE9176B6C5F00B8FCE1 /* TShirt_Customize.jpg */; };
+		63189CEC176B6C6700B8FCE1 /* Hoodies_Customize.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63189CEB176B6C6700B8FCE1 /* Hoodies_Customize.jpg */; };
+		63189CEE176B6E0300B8FCE1 /* Mugs_Customize.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63189CED176B6E0300B8FCE1 /* Mugs_Customize.jpg */; };
+		63189CF0176B6EFD00B8FCE1 /* ToteBags_Customize.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63189CEF176B6EFD00B8FCE1 /* ToteBags_Customize.jpg */; };
 		A10DE8A7173DF58D007126B3 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10DE8A6173DF58D007126B3 /* ColorPickerViewController.m */; };
 		A10DE8AB173E04E0007126B3 /* SizesPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10DE8AA173E04DF007126B3 /* SizesPickerViewController.m */; };
 		A126253B16C6035100373311 /* DetailsProduct.plist in Resources */ = {isa = PBXBuildFile; fileRef = A126253A16C6035100373311 /* DetailsProduct.plist */; };
@@ -101,6 +106,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63189CE7176B65D600B8FCE1 /* BabyBodySuits_Customize.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BabyBodySuits_Customize.jpg; sourceTree = "<group>"; };
+		63189CE9176B6C5F00B8FCE1 /* TShirt_Customize.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TShirt_Customize.jpg; sourceTree = "<group>"; };
+		63189CEB176B6C6700B8FCE1 /* Hoodies_Customize.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Hoodies_Customize.jpg; sourceTree = "<group>"; };
+		63189CED176B6E0300B8FCE1 /* Mugs_Customize.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mugs_Customize.jpg; sourceTree = "<group>"; };
+		63189CEF176B6EFD00B8FCE1 /* ToteBags_Customize.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ToteBags_Customize.jpg; sourceTree = "<group>"; };
 		A10DE8A5173DF58D007126B3 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
 		A10DE8A6173DF58D007126B3 /* ColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerViewController.m; sourceTree = "<group>"; };
 		A10DE8A9173E04DF007126B3 /* SizesPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizesPickerViewController.h; sourceTree = "<group>"; };
@@ -258,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				A15269E916A3554400AC23D0 /* BabyBodySuits_Customize.png */,
+				63189CE7176B65D600B8FCE1 /* BabyBodySuits_Customize.jpg */,
 				A1D2789516C370130075C3AB /* Background_ToolBar.jpg */,
 				A1E6ABDA16F19B960027A95E /* btn_rotateLeft.png */,
 				A1E6ABDB16F19B960027A95E /* btn_rotateRight.png */,
@@ -270,9 +281,13 @@
 				A15269F016A3554400AC23D0 /* custom_ToteBags.png */,
 				A15269F116A3554400AC23D0 /* custom_TShirt.png */,
 				A15269F216A3554400AC23D0 /* Hoodies_Customize.png */,
+				63189CEB176B6C6700B8FCE1 /* Hoodies_Customize.jpg */,
 				A15269F316A3554400AC23D0 /* Mugs_Customize.png */,
+				63189CED176B6E0300B8FCE1 /* Mugs_Customize.jpg */,
 				A15269F416A3554400AC23D0 /* ToteBags_Customize.png */,
+				63189CEF176B6EFD00B8FCE1 /* ToteBags_Customize.jpg */,
 				A15269F516A3554400AC23D0 /* TShirt_Customize.png */,
+				63189CE9176B6C5F00B8FCE1 /* TShirt_Customize.jpg */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -522,6 +537,11 @@
 				A1AF0ED01763AC0300A760B3 /* Vectroid(1).ttf in Resources */,
 				A1AF0ED11763AC0300A760B3 /* Yikes!.ttf in Resources */,
 				A1AF0ED21763AC0300A760B3 /* Zreaks NFI(1).ttf in Resources */,
+				63189CE8176B65D600B8FCE1 /* BabyBodySuits_Customize.jpg in Resources */,
+				63189CEA176B6C5F00B8FCE1 /* TShirt_Customize.jpg in Resources */,
+				63189CEC176B6C6700B8FCE1 /* Hoodies_Customize.jpg in Resources */,
+				63189CEE176B6E0300B8FCE1 /* Mugs_Customize.jpg in Resources */,
+				63189CF0176B6EFD00B8FCE1 /* ToteBags_Customize.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

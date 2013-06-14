@@ -166,7 +166,7 @@
     
     NSArray *options = [root objectForKey:@"Options"];
     
-    [imgProduct setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_Customize", [[options objectAtIndex:selectedProduct] objectForKey:@"Name"]]]];
+    [imgProduct setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_Customize.jpg", [[options objectAtIndex:selectedProduct] objectForKey:@"Name"]]]];
     
 }
 
