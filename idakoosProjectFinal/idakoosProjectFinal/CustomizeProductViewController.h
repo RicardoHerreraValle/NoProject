@@ -42,6 +42,9 @@
     UIToolbar *aToolBar;
         
     int state;
+        
+    NSString *colorCod;
+    NSDictionary *theProduct;
     
 }
 

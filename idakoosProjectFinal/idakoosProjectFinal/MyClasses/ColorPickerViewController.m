@@ -14,17 +14,14 @@
 
 @implementation ColorPickerViewController
 
--(id)initWithStyle:(UITableViewStyle)style
+-(id)initWithStyle:(UITableViewStyle)style withArrey:(NSArray *)colors
 {
     if ([super initWithStyle:style] != nil) {
         
         //Initialize the array
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"DetailsProduct" ofType:@"plist"];
-        NSDictionary *root = [NSDictionary dictionaryWithContentsOfFile:path];
-        
         //Set up the array of colors.
-        _colorNames = [[NSMutableArray alloc] initWithArray:[root objectForKey:@"Color"]];
+        _colorNames = [[NSMutableArray alloc] initWithArray:colors];
         
         //Make row selections persist.
         self.clearsSelectionOnViewWillAppear = NO;
@@ -106,12 +103,7 @@
                                                     blue:[[color objectForKey:@"Blue"] floatValue]/255
                                                    alpha:1.0];
     }
-    /*
-    [cell setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"Red"] floatValue]/255
-                                                      green:[[color objectForKey:@"Green"] floatValue]/255
-                                                       blue:[[color objectForKey:@"Blue"] floatValue]/255
-                                                      alpha:1.0]];
-    */
+    
     return cell;
 }
 

@@ -17,4 +17,7 @@
 
 @property (nonatomic, strong) NSMutableArray *colorNames;
 @property (nonatomic, weak) id<ColorPickerDelegate> delegate;
+
+-(id)initWithStyle:(UITableViewStyle)style withArrey:(NSArray *)colors;
+
 @end

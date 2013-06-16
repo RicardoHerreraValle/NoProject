@@ -166,7 +166,11 @@
     
     NSArray *options = [root objectForKey:@"Options"];
     
-    [imgProduct setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_Customize.jpg", [[options objectAtIndex:selectedProduct] objectForKey:@"Name"]]]];
+    theProduct = [options objectAtIndex:selectedProduct];
+    
+    colorCod = [[[theProduct objectForKey:@"Colors"] objectAtIndex:0] objectForKey:@"Cod"];
+    
+    [imgProduct setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@%@0000FG.jpg", [ theProduct objectForKey:@"Cod"], colorCod]] ];
     
 }
 
@@ -607,7 +611,7 @@
     
     if (_colorPicker == nil) {
         //Create the ColorPickerViewController.
-        _colorPicker = [[ColorPickerViewController alloc] initWithStyle:UITableViewStylePlain];
+        _colorPicker = [[ColorPickerViewController alloc] initWithStyle:UITableViewStylePlain withArrey:[theProduct objectForKey:@"Colors"]];
         
         //Set this VC as the delegate.
         _colorPicker.delegate = self;
@@ -655,6 +659,9 @@
 #pragma mark - PickerDelegate method
 -(void)selectedColor:(int)posColor
 {
+    colorCod = [[[theProduct objectForKey:@"Colors"] objectAtIndex:posColor] objectForKey:@"Cod"];
+    
+    [imgProduct setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@%@0000FG.jpg", [ theProduct objectForKey:@"Cod"], colorCod]] ];
     
     //Dismiss the popover if it's showing.
     if (_colorPickerPopover) {
